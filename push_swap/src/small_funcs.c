@@ -6,13 +6,13 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:27 by leon              #+#    #+#             */
-/*   Updated: 2026/03/18 20:16:39 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	p_to_null(t_list *a)
+int	p_to_null(x_list *a)
 {
 	while (a)
 	{
@@ -22,7 +22,7 @@ int	p_to_null(t_list *a)
 	return (0);
 }
 
-int	sorted(t_list *a)
+int	sorted(x_list *a)
 {
 	if (!a)
 		return (1);
@@ -38,7 +38,7 @@ int	sorted(t_list *a)
 	return (1);
 }
 
-int	get_last(t_list *x)
+int	get_last(x_list *x)
 {
 	if (!x)
 		return (0);
@@ -47,7 +47,7 @@ int	get_last(t_list *x)
 	return (x->x);
 }
 
-int	get_last_p(t_list *x)
+int	get_last_p(x_list *x)
 {
 	if (!x)
 		return (0);
@@ -56,7 +56,7 @@ int	get_last_p(t_list *x)
 	return (x->p);
 }
 
-int	get_biggest(t_list *x)
+int	get_biggest(x_list *x)
 {
 	int	b;
 

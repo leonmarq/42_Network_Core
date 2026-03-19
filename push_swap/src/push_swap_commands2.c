@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_commands2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <lmarquar@student.42wolfsburg.de      +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:23 by leon              #+#    #+#             */
-/*   Updated: 2022/04/08 15:36:24 by leon             ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ra(t_list **a)
+int	ra(x_list **a)
 {
-	t_list	*temp;
-	t_list	*news;
+	x_list	*temp;
+	x_list	*news;
 
 	if (!(*a) || !(*a)->next)
 		return (0);
@@ -30,10 +30,10 @@ int	ra(t_list **a)
 	return (1);
 }
 
-int	rb(t_list **b)
+int	rb(x_list **b)
 {
-	t_list	*temp;
-	t_list	*news;
+	x_list	*temp;
+	x_list	*news;
 
 	if (!(*b) || !(*b)->next)
 		return (0);
@@ -48,10 +48,10 @@ int	rb(t_list **b)
 	return (1);
 }
 
-int	rr(t_list **a, t_list **b)
+int	rr(x_list **a, x_list **b)
 {
-	t_list	*temp;
-	t_list	*news;
+	x_list	*temp;
+	x_list	*news;
 
 	if (!(*a) || !(*a)->next)
 		return (0);

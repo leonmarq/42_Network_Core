@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:30:24 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:30:24 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:29:46 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:29:46 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:32:04 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:32:04 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:31:40 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:31:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1 || !set)
 		return ((char *)s1);
-	start = findstart (s1, set);
+	start = findstart(s1, set);
 	if (!s1[start])
 		return (ft_calloc(1, 1));
 	end = findend (s1, set);
-	res = ft_calloc (end + 2 - start, 1);
+	res = ft_calloc(end + 2 - start, 1);
 	if (!res)
 		return (NULL);
 	i2 = start;

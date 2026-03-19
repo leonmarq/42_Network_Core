@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2022/11/29 18:34:23 by lmarquar         ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "src/push_swap.h"
 
-int	printlists(t_list *a, t_list *b)
+int	printlists(x_list *a, x_list *b)
 {
 	write(1, "a:\n", 3);
 	while (a)
@@ -31,7 +31,7 @@ int	printlists(t_list *a, t_list *b)
 	return (1);
 }
 
-int	fill_list(t_list *a, int argc, char **argv)
+int	fill_list(x_list *a, int argc, char **argv)
 {
 	int		i;
 
@@ -45,17 +45,17 @@ int	fill_list(t_list *a, int argc, char **argv)
 		a->p = 0;
 		if (!(++i < (argc - 1)))
 			break ;
-		a->next = malloc(sizeof(t_list));
+		a->next = malloc(sizeof(x_list));
 		a = a->next;
 	}
 	a->next = NULL;
 	return (0);
 }
 
-int	check_list(t_list *a)
+int	check_list(x_list *a)
 {
-	t_list	*t1;
-	t_list	*t2;
+	x_list	*t1;
+	x_list	*t2;
 	int		i1;
 	int		i2;
 
@@ -80,9 +80,9 @@ int	check_list(t_list *a)
 	return (0);
 }
 
-int	free_list(t_list *a)
+int	free_list(x_list *a)
 {
-	t_list	*temp;
+	x_list	*temp;
 
 	while (a)
 	{
@@ -95,10 +95,10 @@ int	free_list(t_list *a)
 
 int	main(int argc, char **argv)
 {
-	t_list		*a;
-	t_list		*b;
+	x_list		*a;
+	x_list		*b;
 
-	a = malloc(sizeof(t_list));
+	a = malloc(sizeof(x_list));
 	b = NULL;
 	if (fill_list(a, argc, argv) != 0)
 	{

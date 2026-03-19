@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_commands3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <lmarquar@student.42wolfsburg.de      +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:26 by leon              #+#    #+#             */
-/*   Updated: 2022/04/08 15:36:28 by leon             ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rra(t_list **a)
+int	rra(x_list **a)
 {
-	t_list	*temp;
+	x_list	*temp;
 
 	if (!(*a) || !(*a)->next)
 		return (0);
@@ -28,9 +28,9 @@ int	rra(t_list **a)
 	return (1);
 }
 
-int	rrb(t_list **b)
+int	rrb(x_list **b)
 {
-	t_list	*temp;
+	x_list	*temp;
 
 	if (!(*b) || !(*b)->next)
 		return (0);
@@ -44,9 +44,9 @@ int	rrb(t_list **b)
 	return (1);
 }
 
-int	rrr(t_list **a, t_list **b)
+int	rrr(x_list **a, x_list **b)
 {
-	t_list	*temp;
+	x_list	*temp;
 
 	if (!(*a) || !(*a)->next)
 		return (0);

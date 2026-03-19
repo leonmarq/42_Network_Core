@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <lmarquar@student.42wolfsburg.de      +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:20 by leon              #+#    #+#             */
-/*   Updated: 2022/04/08 16:01:11 by leon             ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static
-int	sort5_2smaltob(t_list **a, t_list **b, int count)
+int	sort5_2smaltob(x_list **a, x_list **b, int count)
 {
 	int		i2;
 	int		x;
-	t_list	*tmp;
+	x_list	*tmp;
 
 	while (--count > -1)
 	{
@@ -41,10 +41,10 @@ int	sort5_2smaltob(t_list **a, t_list **b, int count)
 }
 
 static
-int	sort5(t_list **a, t_list **b)
+int	sort5(x_list **a, x_list **b)
 {
 	int		size;
-	t_list	*tmp;
+	x_list	*tmp;
 
 	size = 0;
 	tmp = *a;
@@ -66,9 +66,9 @@ int	sort5(t_list **a, t_list **b)
 	return (0);
 }
 
-int	push_swap(t_list **a, t_list **b)
+int	push_swap(x_list **a, x_list **b)
 {
-	t_list	*temp;
+	x_list	*temp;
 	int		i;
 
 	temp = *a;

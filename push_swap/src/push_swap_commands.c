@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_commands.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <lmarquar@student.42wolfsburg.de      +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:56 by leon              #+#    #+#             */
-/*   Updated: 2022/04/08 15:37:01 by leon             ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sa(t_list *a)
+int	sa(x_list *a)
 {
 	int	temp;
 
@@ -27,7 +27,7 @@ int	sa(t_list *a)
 	return (1);
 }
 
-int	sb(t_list *b)
+int	sb(x_list *b)
 {
 	int	temp;
 
@@ -42,7 +42,7 @@ int	sb(t_list *b)
 	return (1);
 }
 
-int	ss(t_list *a, t_list *b)
+int	ss(x_list *a, x_list *b)
 {
 	int	temp;
 
@@ -60,9 +60,9 @@ int	ss(t_list *a, t_list *b)
 	return (1);
 }
 
-int	pa(t_list **a, t_list **b)
+int	pa(x_list **a, x_list **b)
 {
-	t_list	*newb;
+	x_list	*newb;
 
 	if (!(*b))
 		return (0);
@@ -74,9 +74,9 @@ int	pa(t_list **a, t_list **b)
 	return (1);
 }
 
-int	pb(t_list **a, t_list **b)
+int	pb(x_list **a, x_list **b)
 {
-	t_list	*newa;
+	x_list	*newa;
 
 	if (!(*a))
 		return (0);

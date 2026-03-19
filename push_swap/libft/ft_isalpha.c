@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:27:48 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:27:48 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:28:15 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:28:15 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1024);
+		return (1);
 	else
 		return (0);
 }

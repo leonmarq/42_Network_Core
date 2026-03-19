@@ -3,123 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 13:44:09 by lmarquar          #+#    #+#             */
-/*   Updated: 2022/04/08 16:15:38 by leon             ###   ########.fr       */
+/*   Created: 2026/03/12 10:30:29 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/19 11:48:15 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**dparray(char *s, char c, int *size)
+char	*trim(char const *s, char i)
 {
-	int		i;
-	char	**res;
+	int		j;
+	char	*ret;
 
-	i = 0;
-	*size = 1;
-	while (s[i])
+	ret = ft_calloc(i + 1, 1);
+	if (ret)
 	{
-		if (s[i] == c)
+		j = 0;
+		while (j < i && s[j])
 		{
-			while (s[i] == c)
-				i++;
-			if (s[i])
-				(*size)++;
+			ret[j] = s[j];
+			j++;
 		}
-		if (s[i])
-			i++;
 	}
-	res = (char **)malloc(sizeof(char *) * ((*size) + 1));
-	if (res)
-		*(res + *size) = NULL;
-	return (res);
+	return (ret);
 }
 
-static char	*createstring(char *s, int start, int end)
+int	count_substr(char const *s, char c)
 {
-	char	*res;
-	int		i;
-
-	res = malloc(end + 2 - start);
-	if (!res)
-		return (NULL);
-	i = 0;
-	while (start <= end)
-	{
-		res[i] = s[start];
-		start++;
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
-}
-
-static char	**delete(char **res, int i)
-{
-	i--;
-	while (i >= 0)
-	{
-		free(res[i]);
-		i--;
-	}
-	free(res);
-	return (NULL);
-}
-
-static char	**finish(char **res, char *s, char c, int sizeofres)
-{
-	int	sizecounter;
 	int	i;
-	int	start;
-	int	end;
+	int	r;
 
-	i = 0;
-	start = 0;
-	sizecounter = 0;
-	while (sizecounter < sizeofres)
+	r = 0;
+	while (*s)
 	{
-		if (s[i] == c || !s[i])
-		{
-			end = i - 1;
-			res[sizecounter] = createstring(s, start, end);
-			if (!res[sizecounter])
-				return (delete(res, sizecounter));
-			while (s[i] == c)
-				i++;
-			start = i;
-			sizecounter++;
-		}
-		i++;
+		i = 0;
+		while (s[i] && s[i] != c)
+			i++;
+		if (i)
+			r++;
+		while (s[i] && s[i] == c)
+			i++;
+		s = s + i;
 	}
-	return (res);
+	return (r);
+}
+
+void	**dp_free(void **a)
+{
+	void **t;
+
+	t = a;
+	while (*t)
+	{
+		t++;
+		free(t - 1);
+	}
+	free(a);
+	return (a);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	*st;
 	char	**res;
-	int		size;
-	char	car[2];
+	char	**t;
+	int		i;
 
-	car[0] = c;
-	car[1] = '\0';
-	size = 0;
 	if (!s)
 		return (NULL);
-	st = ft_strtrim(s, car);
-	if (!st)
-		return (NULL);
-	if (!st[0])
-	{
-		free(st);
-		return ((char **)ft_calloc(1, sizeof(char *)));
-	}
-	res = dparray(st, c, &(size));
+	i = count_substr(s, c);
+	res = ft_calloc(i + 1, sizeof(char *));
 	if (!res)
-		return (delete(&st, -1));
-	res = finish(res, st, c, size);
-	free(st);
+		return (NULL);
+	t = res;
+	while (*s)
+	{
+		i = 0;
+		while (s[i] && s[i] != c)
+			i++;
+		if (i)
+		{
+			*(t++) = trim(s, i);
+			if (!(*(t - 1)))
+				return ((char **)dp_free((void **)res));
+		}
+		while (s[i] && s[i] == c)
+			i++;
+		s = s + i;
+	}
 	return (res);
 }

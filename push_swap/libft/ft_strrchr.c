@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:31:59 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:31:59 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:31:33 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:31:33 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
+	c = c % 256;
 	i = 0;
 	while (s[i])
 		i++;

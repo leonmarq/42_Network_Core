@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:27:33 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:27:33 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:28:01 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:28:01 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	sn;
 
 	sn = 9223372036854775807ULL;
-	if (nmemb <= 0 || size <= 0 || nmemb > sn || size > sn)
+	if (nmemb <= 0 || size <= 0)
 		return (malloc(0));
+	if (nmemb > sn || size > sn)
+		return (0);
 	sn = nmemb * size;
 	s = (void *)malloc(sn);
 	if (!s)

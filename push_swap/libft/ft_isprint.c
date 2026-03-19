@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:29:18 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:29:18 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:28:34 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:28:34 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
-		return (16384);
+		return (1);
 	else
 		return (0);
 }

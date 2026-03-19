@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <lmarquar@student.42wolfsburg.de      +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:10 by leon              #+#    #+#             */
-/*   Updated: 2022/04/08 16:38:18 by leon             ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	recursive_atob(t_list **a, t_list **b)
+int	recursive_atob(x_list **a, x_list **b)
 {
 	if ((*a)->p >= get_last_p(*a))
 		if (!a_to_b(a, b))
@@ -25,7 +25,7 @@ int	recursive_atob(t_list **a, t_list **b)
 	return (0);
 }
 
-int	recursive_main(t_list **a, t_list **b)
+int	recursive_main(x_list **a, x_list **b)
 {
 	int	k;
 
@@ -52,7 +52,7 @@ int	recursive_main(t_list **a, t_list **b)
 	return (0);
 }
 
-int	sort(t_list **a, t_list **b)
+int	sort(x_list **a, x_list **b)
 {
 	int	i;
 

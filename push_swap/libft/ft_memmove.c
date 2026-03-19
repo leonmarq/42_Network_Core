@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:30:35 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:30:35 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:29:55 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:29:55 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int		arr[500];
-	size_t	i;
+	char		*d;
+	const char	*s;
 
-	i = 0;
-	while (i < n)
+	d = (char *)dest;
+	s = (const char *)src;
+	if (d > s)
 	{
-		arr[i] = *((char *)src + i);
-		i++;
+		while (n--)
+			d[n] = s[n];
 	}
-	i = 0;
-	while (i < n)
+	else
 	{
-		*((char *)dest + i) = arr[i];
-		i++;
+		while (n--)
+			*d++ = *s++;
 	}
 	return (dest);
 }

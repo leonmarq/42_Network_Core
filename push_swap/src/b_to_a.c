@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   b_to_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <lmarquar@student.42wolfsburg.de      +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:13 by leon              #+#    #+#             */
-/*   Updated: 2022/04/08 15:36:16 by leon             ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static
-int	b_to_a2(t_list **a, t_list **b, int p, int k)
+int	b_to_a2(x_list **a, x_list **b, int p, int k)
 {
 	int	m;
 
@@ -35,7 +35,7 @@ int	b_to_a2(t_list **a, t_list **b, int p, int k)
 	return (0);
 }
 
-int	b_to_a(t_list **a, t_list **b)
+int	b_to_a(x_list **a, x_list **b)
 {
 	int	k;
 	int	p;
@@ -57,7 +57,7 @@ int	b_to_a(t_list **a, t_list **b)
 }
 
 static
-int	b_to_a_rev2(t_list **a, t_list **b, int p, int k)
+int	b_to_a_rev2(x_list **a, x_list **b, int p, int k)
 {
 	int	m;
 
@@ -78,7 +78,7 @@ int	b_to_a_rev2(t_list **a, t_list **b, int p, int k)
 	return (0);
 }
 
-int	b_to_a_rev(t_list **a, t_list **b)
+int	b_to_a_rev(x_list **a, x_list **b)
 {
 	int	k;
 	int	m;

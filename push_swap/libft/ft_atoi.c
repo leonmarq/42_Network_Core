@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:27:15 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:27:15 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:07:04 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:07:04 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	transform(const char *nptr, int si, int x10)
 		x10 = x10 * 10;
 		i--;
 	}
-	if (res > (long long)2147483647 || res < (long long) -2147483648)
+	if (res > (long long)2147483647 || res < (long long)-2147483648)
 		return (0);
 	return (res);
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <lmarquar@student.42wolfsburg.de      +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:21 by leon              #+#    #+#             */
-/*   Updated: 2022/04/08 15:37:24 by leon             ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_size_end(t_list *x)
+int	get_size_end(x_list *x)
 {
-	t_list	*tmp;
+	x_list	*tmp;
 	int		p;
 	int		res;
 
@@ -33,7 +33,7 @@ int	get_size_end(t_list *x)
 	return (res);
 }
 
-int	get_size(t_list *x)
+int	get_size(x_list *x)
 {
 	int	res;
 	int	p;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:31:54 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:31:54 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:31:29 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:31:29 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

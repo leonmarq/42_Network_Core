@@ -6,13 +6,13 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:31 by leon              #+#    #+#             */
-/*   Updated: 2026/03/18 20:16:59 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sort3(t_list **a, t_list **b, int k)
+int	sort3(x_list **a, x_list **b, int k)
 {
 	if (k == 2)
 	{
@@ -37,7 +37,7 @@ int	sort3(t_list **a, t_list **b, int k)
 	return (0);
 }
 
-int	sort3_b_pa(t_list **a, t_list **b, int k)
+int	sort3_b_pa(x_list **a, x_list **b, int k)
 {
 	if (k == 2)
 	{

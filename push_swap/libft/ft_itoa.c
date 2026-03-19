@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarquar <lmarquar@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 13:29:23 by lmarquar          #+#    #+#             */
-/*   Updated: 2021/06/04 13:29:23 by lmarquar         ###   ########.fr       */
+/*   Created: 2026/03/12 10:28:43 by leonmarq          #+#    #+#             */
+/*   Updated: 2026/03/12 10:28:43 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*ft_itoa(int n)
 {
 	int		i;
 	char	*s;
-	char	*res;
 	long	nl;
 
 	i = 0;
@@ -49,7 +48,9 @@ char	*ft_itoa(int n)
 		nl = nl / 10;
 	}
 	nl = n;
-	s = ft_calloc(i + 1, 1);
-	res = transform(s, nl, i);
-	return (res);
+	s = ft_calloc(i + 1, sizeof(char));
+	if (!s)
+		return (NULL);
+	s = transform(s, nl, i);
+	return (s);
 }

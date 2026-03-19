@@ -12,7 +12,9 @@ SRCS	:= main.c \
 		$(SRC_DIR)/push_swap_commands.c \
 		$(SRC_DIR)/push_swap_commands2.c \
 		$(SRC_DIR)/push_swap_commands3.c \
-		$(SRC_DIR)/push_swap_sort.c \
+		$(SRC_DIR)/algorithm_simple.c \
+		$(SRC_DIR)/algorithm_medium.c \
+		$(SRC_DIR)/algorithm_complex.c \
 		$(SRC_DIR)/find_median.c \
 		$(SRC_DIR)/small_funcs.c \
 		$(SRC_DIR)/sort3.c \

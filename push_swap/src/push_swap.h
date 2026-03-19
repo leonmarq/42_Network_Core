@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 13:23:54 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/19 19:18:33 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <stdint.h>
 # include "../libft/libft.h"
 
+# define DEFAULT 0
+# define SIMPLE 1
+# define MEDIUM 2
+# define COMPLEX 3
+# define ADAPTIVE 4
+
 typedef struct p_list
 {
 	int				x;
@@ -27,7 +33,7 @@ typedef struct p_list
 }	x_list;
 
 int		printlists(x_list *a, x_list *b);
-int		push_swap(x_list **a, x_list **b);
+int		push_swap(x_list **a, x_list **b, int strat);
 long	ft_atoicheck(char *nptr);
 int		err(void);
 
@@ -41,7 +47,9 @@ int		rb(x_list **b);
 int		rr(x_list **a, x_list **b);
 int		rra(x_list **a);
 int		rrb(x_list **b);
-int		sort(x_list **a, x_list **b);
+int		algorithm_complex(x_list **a, x_list **b);
+int		algorithm_medium(x_list **a, x_list **b);
+int		algorithm_simple(x_list **a, x_list **b);
 
 int		b_to_a(x_list **a, x_list **b);
 int		b_to_a_rev(x_list **a, x_list **b);

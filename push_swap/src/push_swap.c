@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:20 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/19 19:23:59 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,18 @@ int	sort5(x_list **a, x_list **b)
 	return (0);
 }
 
-int	push_swap(x_list **a, x_list **b)
+int	pnx_algorithm(x_list **a, x_list **b, int strat)
+{
+	if (strat == SIMPLE)
+		return (algorithm_simple(a, b));
+	else if (strat == MEDIUM)
+		return (algorithm_medium(a, b));
+	else if (strat == COMPLEX || strat == DEFAULT || strat == ADAPTIVE)
+		return (algorithm_complex(a, b));
+	return (0);
+}
+
+int	push_swap(x_list **a, x_list **b, int strat)
 {
 	x_list	*temp;
 	int		i;
@@ -90,6 +101,6 @@ int	push_swap(x_list **a, x_list **b)
 	else if (i <= 5 && i > 2)
 		sort5(a, b);
 	else
-		sort(a, b);
+		pnx_algorithm(a, b, strat);
 	return (0);
 }

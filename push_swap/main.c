@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/19 19:06:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,28 @@ int	printlists(x_list *a, x_list *b)
 	return (1);
 }
 
-int	fill_list(x_list *a, int argc, char **argv)
+int	get_strat(char **argv)
+{
+	if (ft_strncmp("--simple", argv[1], 15))
+		return (SIMPLE);
+	else if (ft_strncmp("--medium", argv[1], 15))
+		return (MEDIUM);
+	else if (ft_strncmp("--complex", argv[1], 15))
+		return (COMPLEX);
+	else if (ft_strncmp("--adaptive", argv[1], 15))
+		return (ADAPTIVE);
+	else
+		return (DEFAULT);
+}
+
+int	fill_list(x_list *a, int argc, char **argv, int *strat)
 {
 	int		i;
 
 	i = 0;
+	*strat = get_strat(argv);
+	if (*strat != DEFAULT)
+		i++;
 	while (i < (argc - 1))
 	{
 		a->next = NULL;
@@ -97,10 +114,13 @@ int	main(int argc, char **argv)
 {
 	x_list		*a;
 	x_list		*b;
+	int			strat;
 
+	if (argc < 2)
+		return (0);
 	a = malloc(sizeof(x_list));
 	b = NULL;
-	if (fill_list(a, argc, argv) != 0)
+	if (fill_list(a, argc, argv, &strat) != 0)
 	{
 		err();
 		free_list(a);
@@ -112,8 +132,7 @@ int	main(int argc, char **argv)
 		free_list(a);
 		return (1);
 	}
-	push_swap(&a, &b);
-	printlists(a, b);
+	push_swap(&a, &b, strat);
 	free_list(a);
 	return (1);
 }

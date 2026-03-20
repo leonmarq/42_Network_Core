@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 10:30:29 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/20 16:29:25 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/20 18:56:21 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	count_substr(char const *s, char c)
 
 void	**dp_free(void **a)
 {
-	void *t;
+	void	*t;
 
 	t = *a;
 	while (t)
@@ -82,11 +82,9 @@ char	**ft_split(char const *s, char c)
 		while (s[i] && s[i] != c)
 			i++;
 		if (i)
-		{
 			*(t++) = trim(s, i);
-			if (!(*(t - 1)))
-				return ((char **)dp_free((void **)res));
-		}
+		if (i && !(*(t - 1)))
+			return ((char **)dp_free((void **)res));
 		while (s[i] && s[i] == c)
 			i++;
 		s = s + i;

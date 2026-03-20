@@ -33,13 +33,13 @@ int	printlists(x_list *a, x_list *b)
 
 int	get_strat(char **argv)
 {
-	if (ft_strncmp("--simple", argv[1], 15))
+	if (ft_strncmp("--simple", argv[1], 15) == 0)
 		return (SIMPLE);
-	else if (ft_strncmp("--medium", argv[1], 15))
+	else if (ft_strncmp("--medium", argv[1], 15) == 0)
 		return (MEDIUM);
-	else if (ft_strncmp("--complex", argv[1], 15))
+	else if (ft_strncmp("--complex", argv[1], 15) == 0)
 		return (COMPLEX);
-	else if (ft_strncmp("--adaptive", argv[1], 15))
+	else if (ft_strncmp("--adaptive", argv[1], 15) == 0)
 		return (ADAPTIVE);
 	else
 		return (DEFAULT);

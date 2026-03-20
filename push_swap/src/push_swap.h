@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 19:18:33 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/20 11:39:26 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		rb(x_list **b);
 int		rr(x_list **a, x_list **b);
 int		rra(x_list **a);
 int		rrb(x_list **b);
+int		rrr(x_list **a, x_list **b);
 int		algorithm_complex(x_list **a, x_list **b);
 int		algorithm_medium(x_list **a, x_list **b);
 int		algorithm_simple(x_list **a, x_list **b);
@@ -66,4 +67,5 @@ int		sorted(x_list *a);
 int		get_last(x_list *x);
 int		get_last_p(x_list *x);
 int		get_biggest(x_list *x);
+int 	min(int a, int b);
 #endif

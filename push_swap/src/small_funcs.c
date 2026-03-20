@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:27 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/20 11:39:09 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,12 @@ int	get_biggest(x_list *x)
 		if (b < x->x)
 			b = x->x;
 	}
+	return (b);
+}
+
+int min(int a, int b)
+{
+	if (a < b)
+		return (a);
 	return (b);
 }

@@ -113,24 +113,31 @@ class PushSwapVisualizer:
     def __init__(self, root: Tk) -> None:
         self.root = root
         self.root.title("Push Swap Visualizer")
-        self.root.geometry("1400x900")
         self.root.minsize(1520, 860)
         self.root.configure(bg=BG_APP)
+        self._set_initial_geometry()
 
         self.push_swap_var = StringVar(value=str(DEFAULT_PUSH_SWAP))
         self.checker_var = StringVar(value=str(DEFAULT_CHECKER))
         self.values_var = StringVar(value="2 1 3")
         self.status_var = StringVar(value="Ready.")
         self.info_var = StringVar(value="No run loaded.")
-        self.speed_var = StringVar(value="120")
+        self.speed_var = StringVar(value="20")
 
         self.snapshots: list[Snapshot] = []
         self.ops: list[str] = []
         self.current_index = 0
         self.play_job: str | None = None
+        self.value_ranks: dict[int, int] = {}
 
         self._build_ui()
         self._render_current_state()
+
+    def _set_initial_geometry(self) -> None:
+        screen_h = self.root.winfo_screenheight()
+        width = 1520
+        height = max(860, screen_h - 80)
+        self.root.geometry(f"{width}x{height}+20+20")
 
     def _build_ui(self) -> None:
         header = Frame(self.root, bg=BG_APP, padx=14, pady=14)
@@ -291,9 +298,9 @@ class PushSwapVisualizer:
             row=5, column=0, columnspan=3, sticky="w", pady=(10, 0)
         )
 
-        Scale(
+        delay_scale = Scale(
             actions,
-            from_=20,
+            from_=1,
             to=1000,
             orient="horizontal",
             showvalue=True,
@@ -303,7 +310,9 @@ class PushSwapVisualizer:
             highlightthickness=0,
             troughcolor="#d6deeb",
             activebackground=BG_ACCENT,
-        ).grid(row=6, column=0, columnspan=3, sticky="we", padx=4)
+        )
+        delay_scale.set(20)
+        delay_scale.grid(row=6, column=0, columnspan=3, sticky="we", padx=4)
         for col in range(3):
             actions.grid_columnconfigure(col, weight=1, minsize=128)
 
@@ -425,6 +434,7 @@ class PushSwapVisualizer:
 
         self.ops = ops
         self.snapshots = snapshots
+        self.value_ranks = {value: idx for idx, value in enumerate(sorted(values))}
         self.current_index = 0
         self._refresh_ops_text()
         self._render_current_state()
@@ -462,24 +472,25 @@ class PushSwapVisualizer:
         width = max(self.canvas.winfo_width(), 1000)
         height = max(self.canvas.winfo_height(), 700)
         col_width = width // 2
-        top_pad = 80
-        stack_height = height - 140
+        top_pad = 115
+        stack_height = height - 170
         max_size = max(1, len(self.snapshots[0].a))
         row_height = max(6, stack_height / max_size)
-        max_abs = max(1, max(abs(v) for v in self.snapshots[0].a))
+        max_rank = max(1, len(self.value_ranks) - 1)
 
         self.canvas.create_text(col_width // 2, 34, text="Stack A", fill=FG_LIGHT, font=("Helvetica", 22, "bold"))
         self.canvas.create_text(col_width + col_width // 2, 34, text="Stack B", fill=FG_LIGHT, font=("Helvetica", 22, "bold"))
+        self.canvas.create_line(36, 72, width - 36, 72, fill="#223040", width=2)
         self.canvas.create_text(
             width // 2,
-            68,
+            90,
             text=f"step {self.current_index}/{len(self.ops)}   op: {snap.op}",
             fill="#ffd166",
             font=("Helvetica", 16, "bold"),
         )
 
-        self._draw_stack(snap.a, 0, col_width, top_pad, row_height, max_abs, "#2ec4b6")
-        self._draw_stack(snap.b, col_width, col_width, top_pad, row_height, max_abs, "#ff6b6b")
+        self._draw_stack(snap.a, 0, col_width, top_pad, row_height, max_rank, "#2ec4b6")
+        self._draw_stack(snap.b, col_width, col_width, top_pad, row_height, max_rank, "#ff6b6b")
 
     def _draw_stack(
         self,
@@ -488,7 +499,7 @@ class PushSwapVisualizer:
         col_width: int,
         top_pad: int,
         row_height: float,
-        max_abs: int,
+        max_rank: int,
         color: str,
     ) -> None:
         center_x = x_offset + col_width / 2
@@ -503,7 +514,9 @@ class PushSwapVisualizer:
         for idx, value in enumerate(stack):
             y0 = top_pad + idx * row_height
             y1 = y0 + row_height - 2
-            bar_half = max(8, (abs(value) / max_abs) * (col_width * 0.4))
+            rank = self.value_ranks.get(value, 0)
+            width_ratio = (rank + 1) / (max_rank + 1)
+            bar_half = max(8, width_ratio * (col_width * 0.4))
             self.canvas.create_rectangle(
                 center_x - bar_half,
                 y0,

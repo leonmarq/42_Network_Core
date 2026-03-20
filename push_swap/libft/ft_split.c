@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 10:30:29 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/19 11:48:15 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/20 14:33:16 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,14 @@ int	count_substr(char const *s, char c)
 
 void	**dp_free(void **a)
 {
-	void **t;
+	void *t;
 
-	t = a;
-	while (*t)
+	t = *a;
+	while (t)
 	{
 		t++;
 		free(t - 1);
 	}
-	free(a);
 	return (a);
 }
 

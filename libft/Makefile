@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC	:= gcc
+CC	:= cc
 CFLAGS	:= -Werror -Wall -Wextra
 LFLAGS	:= -crs
 BLFLAGS	:= -rvs

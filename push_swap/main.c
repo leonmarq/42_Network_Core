@@ -6,43 +6,48 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 19:06:40 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/21 20:11:29 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "src/push_swap.h"
 
-int	printlists(x_list *a, x_list *b)
+static
+int	set_strat(char *s, int *strat)
 {
-	write(1, "a:\n", 3);
-	while (a)
-	{
-		ft_putnbr_fd(a->x, 1);
-		a = a->next;
-		write(1, "\n", 1);
-	}
-	write(1, "\nb:\n", 4);
-	while (b)
-	{
-		ft_putnbr_fd(b->x, 1);
-		b = b->next;
-		write(1, "\n", 1);
-	}
+	if (ft_strncmp("--simple", s, 15) == 0)
+		*strat = (SIMPLE);
+	else if (ft_strncmp("--medium", s, 15) == 0)
+		*strat = (MEDIUM);
+	else if (ft_strncmp("--complex", s, 15) == 0)
+		*strat = (COMPLEX);
+	else if (ft_strncmp("--adaptive", s, 15) == 0)
+		*strat = (ADAPTIVE);
+	else
+		return (0);
 	return (1);
 }
 
-int	get_strat(char **argv)
+static
+int	parse_opts(int argc, char **argv, t_opts *o)
 {
-	if (ft_strncmp("--simple", argv[1], 15) == 0)
-		return (SIMPLE);
-	else if (ft_strncmp("--medium", argv[1], 15) == 0)
-		return (MEDIUM);
-	else if (ft_strncmp("--complex", argv[1], 15) == 0)
-		return (COMPLEX);
-	else if (ft_strncmp("--adaptive", argv[1], 15) == 0)
-		return (ADAPTIVE);
-	else
-		return (DEFAULT);
+	int	i;
+
+	o->strat = DEFAULT;
+	o->bench = 0;
+	i = 1;
+	while (i < argc && ft_strncmp("--", argv[2], 2) == 0)
+	{
+		if (ft_strncmp("--bench", argv[i], 15) == 0)
+			o->bench = 1;
+		else if (!set_strat(argv[i], &o->strat))
+			return (1);
+		i++;
+	}
+	o->first_value = i;
+	if (o->first_value >= argc)
+		return (1);
+	return (0);
 }
 
 int	fill_list(x_list *a, int argc, char **argv, int *strat)
@@ -110,17 +115,43 @@ int	free_list(x_list *a)
 	return (0);
 }
 
+double compute_disorder(x_list *a)
+{
+	double	mistakes;
+	double	total_pairs;
+	int i;
+	int j;
+
+	mistakes = 0.0;
+	total_pairs = 0.0;
+	i = 0;
+	while (i < get_size(a) - 1)
+	{
+		j = i + 1;
+		while (j < get_size(a) - 1)
+		{
+			total_pairs += 1;
+			if (get_index(a, i) < get_index(a, j))
+				mistakes += 1;
+			j++;
+		}
+		i++;
+	}
+	return ((mistakes * 100.0) / total_pairs);
+}
+
 int	main(int argc, char **argv)
 {
 	x_list		*a;
 	x_list		*b;
-	int			strat;
+	t_opts		o;
+	double		disorder;
 
 	if (argc < 2)
 		return (0);
 	a = malloc(sizeof(x_list));
 	b = NULL;
-	if (fill_list(a, argc, argv, &strat) != 0)
+	if (fill_list(a, argc, argv, &o.strat) != 0)
 	{
 		err();
 		free_list(a);
@@ -132,7 +163,11 @@ int	main(int argc, char **argv)
 		free_list(a);
 		return (1);
 	}
-	push_swap(&a, &b, strat);
+	disorder = compute_disorder(a);
+	bench_reset();
+	bench_enable(o.bench);
+	push_swap(&a, &b, o.strat);
+	bench_print_report(o.strat, disorder);
 	free_list(a);
 	return (1);
 }

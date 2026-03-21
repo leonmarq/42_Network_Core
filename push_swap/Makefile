@@ -19,7 +19,9 @@ SRCS	:= main.c \
 		$(SRC_DIR)/small_funcs.c \
 		$(SRC_DIR)/sort3.c \
 		$(SRC_DIR)/a_to_b.c \
-		$(SRC_DIR)/b_to_a.c
+		$(SRC_DIR)/b_to_a.c \
+		$(SRC_DIR)/debug_utils.c \
+		$(SRC_DIR)/benchmark.c
 OBJS	:= $(SRCS:.c=.o)
 
 all: $(NAME)

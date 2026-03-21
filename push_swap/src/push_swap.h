@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/20 11:39:26 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/21 19:56:29 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,15 @@ typedef struct p_list
 	struct p_list	*next;
 }	x_list;
 
+typedef struct s_opts
+{
+	int	strat;
+	int	bench;
+	int	first_value;
+}	t_opts;
+
 int		printlists(x_list *a, x_list *b);
+
 int		push_swap(x_list **a, x_list **b, int strat);
 long	ft_atoicheck(char *nptr);
 int		err(void);
@@ -68,4 +76,6 @@ int		get_last(x_list *x);
 int		get_last_p(x_list *x);
 int		get_biggest(x_list *x);
 int 	min(int a, int b);
+x_list	*get_index(x_list *x, int p);
+
 #endif

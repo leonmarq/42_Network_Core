@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:53:58 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/17 14:07:47 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/21 14:20:39 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	grow_line(t_line *line, size_t add)
 		return (0);
 	s = ft_calloc(nc, 1);
 	if (!s)
-		return (-1);
+		return (GNL_ERROR);
 	while (i < line->len)
 	{
 		s[i] = line->s[i];
@@ -50,7 +50,7 @@ static int	append(t_line *line, char *buffer)
 	if (buffer[use] == '\n')
 		use++;
 	if (grow_line(line, use) < 0)
-		return (-1);
+		return (GNL_ERROR);
 	i = -1;
 	while (++i < use)
 		line->s[line->len + i] = buffer[i];
@@ -61,8 +61,8 @@ static int	append(t_line *line, char *buffer)
 		buffer[j++] = buffer[use++];
 	buffer[j] = 0;
 	if (line->len && line->s[line->len - 1] == '\n')
-		return (1);
-	return (2);
+		return (GNL_LINE_COMPLETE);
+	return (GNL_NEED_MORE);
 }
 
 static
@@ -70,20 +70,19 @@ int	createline(int fd, char *buffer, t_line *line)
 {
 	int	flag;
 
-	flag = 2;
-	while (flag > 1)
+	flag = GNL_NEED_MORE;
+	while (flag == GNL_NEED_MORE)
 	{
 		if (!buffer[0])
 		{
 			flag = read(fd, buffer, BUFFER_SIZE);
 			if (flag < 0)
-				return (-1);
+				return (GNL_ERROR);
 			buffer[flag] = 0;
+			if (flag == GNL_EOF_NO_DATA)
+				return (GNL_EOF_NO_DATA);
 		}
-		if (flag == 0 && line->len == 0)
-			return (-2);
-		if (flag > 0)
-			flag = append(line, buffer);
+		flag = append(line, buffer);
 	}
 	return (flag);
 }
@@ -106,12 +105,13 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (free(line.s), NULL);
 	flag = createline(fd, buffer, &line);
-	if (flag <= 0)
+	if (flag == GNL_LINE_COMPLETE || (flag == GNL_EOF_NO_DATA && line.len > 0))
 	{
-		free(buffer);
-		buffer = NULL;
-		if (flag < 0)
-			return (free(line.s), NULL);
+		if (flag == GNL_EOF_NO_DATA)
+			free_n(&buffer);
+		return (line.s);
 	}
-	return (line.s);
+	free_n(&buffer);
+	free_n(&line.s);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:20 by leon              #+#    #+#             */
-/*   Updated: 2026/03/20 10:17:35 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/22 10:15:19 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	pnx_algorithm(x_list **a, x_list **b, int strat)
 	return (0);
 }
 
-int	push_swap(x_list **a, x_list **b, int strat)
+int	push_swap(x_list **a, x_list **b, int strat, t_bench *bench)
 {
 	x_list	*temp;
 	int		i;

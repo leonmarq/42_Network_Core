@@ -6,6 +6,8 @@ int	printlists(x_list *a, x_list *b)
 	while (a)
 	{
 		ft_putnbr_fd(a->x, 1);
+		write (1, " ", 1);
+		ft_putnbr_fd(a->p, 1);
 		a = a->next;
 		write(1, "\n", 1);
 	}
@@ -13,6 +15,8 @@ int	printlists(x_list *a, x_list *b)
 	while (b)
 	{
 		ft_putnbr_fd(b->x, 1);
+		write (1, " ", 1);
+		ft_putnbr_fd(b->p, 1);
 		b = b->next;
 		write(1, "\n", 1);
 	}

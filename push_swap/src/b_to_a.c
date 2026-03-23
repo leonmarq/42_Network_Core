@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:13 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 17:28:13 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	b_to_a(x_list **a, x_list **b)
 	int	k;
 	int	p;
 
-	if ((*b)->x == get_biggest(*b))
-		pa(a, b);
+	if ((*a)->opts->debug)
+		printlists(*a, *b);
 	if (!(*b))
 		return (0);
 	k = get_size(*b);
@@ -60,8 +60,10 @@ static
 int	b_to_a_rev2(x_list **a, x_list **b, int p, int k)
 {
 	int	m;
+	int did_ra;
 
 	m = find_median_end(*b);
+	did_ra = 0;
 	while (k > 0)
 	{
 		rrb(b);
@@ -70,11 +72,15 @@ int	b_to_a_rev2(x_list **a, x_list **b, int p, int k)
 			pa(a, b);
 			(*a)->p = p;
 			if ((*a)->x == m)
+			{
 				ra(a);
+				did_ra = 1;
+			}
 		}
 		k--;
 	}
-	rra(a);
+	if (did_ra)
+		rra(a);
 	return (0);
 }
 
@@ -84,13 +90,20 @@ int	b_to_a_rev(x_list **a, x_list **b)
 	int	m;
 	int	p;
 
+	if ((*a)->opts->debug)
+		printlists(*a, *b);
+	if (!(*b))
+		return (0);
 	k = get_size_end(*b);
 	p = (*a)->p + 1;
 	m = k;
 	if (k <= 3)
 	{
-		while (m-- > 0)
-			rrb(b);
+		if (k < get_size(*b) && (*b)->p > 1)
+		{
+			while (m-- > 0)
+				rrb(b);
+		}
 		sort3_b_pa(a, b, k);
 	}
 	else

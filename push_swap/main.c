@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 14:44:25 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 16:08:55 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 	{
 		if (ft_strncmp("--bench", argv[i], 15) == 0 && !o->bench)
 			o->bench = ft_calloc(1, sizeof(t_bench));
+		else if (ft_strncmp("--debug", argv[i], 15) == 0)
+			o->debug = 1;
 		else if (!set_strat(argv[i], &o->strat))
 			return (1);
 		i++;

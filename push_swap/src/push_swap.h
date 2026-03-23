@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 14:36:22 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 16:08:22 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_bench
 typedef struct s_opts
 {
 	int		strat;
+	int		debug;
 	double	disorder;
 	t_bench	*bench;
 	int		first_value;

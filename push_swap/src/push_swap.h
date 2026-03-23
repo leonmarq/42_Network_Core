@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 09:28:34 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 12:15:43 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,13 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdint.h>
-# include "../libft/libft.h"
+# include "../ft_dprintf/ft_dprintf.h"
 
 # define DEFAULT 0
 # define SIMPLE 1
 # define MEDIUM 2
 # define COMPLEX 3
 # define ADAPTIVE 4
-
-typedef struct p_list
-{
-	int				x;
-	int				p;
-	struct s_opts	*opts;
-	struct p_list	*next;
-}	x_list;
-
-typedef struct s_opts
-{
-	int		strat;
-	t_bench	*bench;
-	int		first_value;
-}	t_opts;
 
 typedef enum e_op_type
 {
@@ -56,16 +41,33 @@ typedef enum e_op_type
 	OP_COUNT
 }	t_op_type;
 
+
 typedef struct s_bench
 {
 	unsigned long	total;
 	unsigned long	op[OP_COUNT];
 }	t_bench;
 
+typedef struct s_opts
+{
+	int		strat;
+	double	disorder;
+	t_bench	*bench;
+	int		first_value;
+}	t_opts;
+
+typedef struct p_list
+{
+	int				x;
+	int				p;
+	struct s_opts	*opts;
+	struct p_list	*next;
+}	x_list;
+
 void	bench_reset(void);
 void	bench_enable(int enabled);
 void	bench_count(t_op_type op);
-void	bench_print_report(int strat, double disorder_percent);
+void 	bench_print_report(t_bench *b, int strat, double disorder_percent);
 
 int		printlists(x_list *a, x_list *b);
 

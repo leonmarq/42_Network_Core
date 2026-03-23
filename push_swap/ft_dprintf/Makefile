@@ -6,14 +6,14 @@
 #    By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/06 13:40:33 by lmarquar          #+#    #+#              #
-#    Updated: 2026/03/23 09:12:41 by leonmarq         ###   ########.fr        #
+#    Updated: 2026/03/23 12:19:36 by leonmarq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		:= cc
 CFLAGS	:= -Wall -Werror -Wextra
 LFLAGS	:= -crs
-NAME	:= libftprintf.a
+NAME	:= libftprintfd.a
 SUBDIR	:= libft/
 SUBAR	:= libft/libft.a
 PSRC	:= ft_dprintf.c ft_createstr.c ft_fillist.c \

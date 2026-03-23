@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 09:41:14 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 13:17:26 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 	int	i;
 
 	o->strat = DEFAULT;
-	o->bench = 0;
+	o->bench = NULL;
 	i = 1;
-	while (i < argc && ft_strncmp("--", argv[2], 2) == 0)
+	while (i < argc && ft_strncmp("--", argv[i], 2) == 0)
 	{
-		if (ft_strncmp("--bench", argv[i], 15) == 0)
-			o->bench = 1;
+		if (ft_strncmp("--bench", argv[i], 15) == 0 && !o->bench)
+			o->bench = ft_calloc(1, sizeof(t_bench));
 		else if (!set_strat(argv[i], &o->strat))
 			return (1);
 		i++;
@@ -74,6 +74,34 @@ int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 	return (0);
 }
 
+double compute_disorder(x_list *a)
+{
+	double	mistakes;
+	double	total_pairs;
+	x_list	*i;
+	x_list	*j;
+
+	mistakes = 0.0;
+	total_pairs = 0.0;
+	i = 0;
+	i = a;
+	while (i && i->next)
+	{
+		j = i->next;
+		while (j)
+		{
+			total_pairs += 1.0;
+			if (i->x > j->x)
+				mistakes += 1.0;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	if (total_pairs == 0.0)
+		return (0.0);
+	return ((mistakes * 100.0) / total_pairs);
+}
+
 int	check_list(x_list *a)
 {
 	x_list	*t1;
@@ -102,7 +130,7 @@ int	check_list(x_list *a)
 	return (0);
 }
 
-int	free_list(x_list *a)
+int	ps_free_list(x_list *a)
 {
 	x_list	*temp;
 
@@ -115,37 +143,13 @@ int	free_list(x_list *a)
 	return (0);
 }
 
-double compute_disorder(x_list *a)
-{
-	double	mistakes;
-	double	total_pairs;
-	int i;
-	int j;
 
-	mistakes = 0.0;
-	total_pairs = 0.0;
-	i = 0;
-	while (i < get_size(a) - 1)
-	{
-		j = i + 1;
-		while (j < get_size(a) - 1)
-		{
-			total_pairs += 1;
-			if (get_index(a, i) < get_index(a, j))
-				mistakes += 1;
-			j++;
-		}
-		i++;
-	}
-	return ((mistakes * 100.0) / total_pairs);
-}
 
 int	main(int argc, char **argv)
 {
 	x_list		*a;
 	x_list		*b;
 	t_opts		o;
-	double		disorder;
 
 	if (argc < 2)
 		return (0);
@@ -154,20 +158,19 @@ int	main(int argc, char **argv)
 	if (fill_list(a, argc, argv, &o) != 0)
 	{
 		err();
-		free_list(a);
+		ps_free_list(a);
 		return (1);
 	}
 	if (check_list(a) != 0)
 	{
 		err();
-		free_list(a);
+		ps_free_list(a);
 		return (1);
 	}
-	disorder = compute_disorder(a);
-	bench_reset();
-	bench_enable(o.bench);
+	o.disorder = compute_disorder(a);
 	push_swap(&a, &b);
-	bench_print_report(o.strat, disorder);
-	free_list(a);
+	if (o.bench)
+		bench_print_report(o.bench, o.strat, o.disorder);
+	ps_free_list(a);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/22 10:14:07 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 09:28:34 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ typedef struct p_list
 {
 	int				x;
 	int				p;
+	struct s_opts	*opts;
 	struct p_list	*next;
 }	x_list;
 
 typedef struct s_opts
 {
-	int	strat;
-	int	bench;
-	int	first_value;
+	int		strat;
+	t_bench	*bench;
+	int		first_value;
 }	t_opts;
 
 typedef enum e_op_type
@@ -57,7 +58,6 @@ typedef enum e_op_type
 
 typedef struct s_bench
 {
-	int				enabled;
 	unsigned long	total;
 	unsigned long	op[OP_COUNT];
 }	t_bench;
@@ -69,7 +69,7 @@ void	bench_print_report(int strat, double disorder_percent);
 
 int		printlists(x_list *a, x_list *b);
 
-int		push_swap(x_list **a, x_list **b, int strat, t_bench *bench);
+int		push_swap(x_list **a, x_list **b);
 long	ft_atoicheck(char *nptr);
 int		err(void);
 

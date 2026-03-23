@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/21 20:11:29 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 09:41:14 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,13 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 	return (0);
 }
 
-int	fill_list(x_list *a, int argc, char **argv, int *strat)
+int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 {
 	int		i;
 
-	i = 0;
-	*strat = get_strat(argv);
-	if (*strat != DEFAULT)
-		i++;
+	if (parse_opts(argc, argv, opts))
+		return (1);
+	i = opts->first_value;
 	while (i < (argc - 1))
 	{
 		a->next = NULL;
@@ -67,7 +66,8 @@ int	fill_list(x_list *a, int argc, char **argv, int *strat)
 		a->p = 0;
 		if (!(++i < (argc - 1)))
 			break ;
-		a->next = malloc(sizeof(x_list));
+		a->next = ft_calloc(1, sizeof(x_list));
+		a->opts = opts;
 		a = a->next;
 	}
 	a->next = NULL;
@@ -151,7 +151,7 @@ int	main(int argc, char **argv)
 		return (0);
 	a = malloc(sizeof(x_list));
 	b = NULL;
-	if (fill_list(a, argc, argv, &o.strat) != 0)
+	if (fill_list(a, argc, argv, &o) != 0)
 	{
 		err();
 		free_list(a);
@@ -166,7 +166,7 @@ int	main(int argc, char **argv)
 	disorder = compute_disorder(a);
 	bench_reset();
 	bench_enable(o.bench);
-	push_swap(&a, &b, o.strat);
+	push_swap(&a, &b);
 	bench_print_report(o.strat, disorder);
 	free_list(a);
 	return (1);

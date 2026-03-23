@@ -6,14 +6,14 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:39:44 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/22 16:03:12 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 09:12:41 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dprintf.h"
 
 static
-int	nbrprecision2(x_list *list, char *s)
+int	nbrprecision2(t_plist *list, char *s)
 {
 	int	i;
 	int	i2;
@@ -38,7 +38,7 @@ int	nbrprecision2(x_list *list, char *s)
 }
 
 static
-int	nbrprecision(x_list *list)
+int	nbrprecision(t_plist *list)
 {
 	int		i;
 	char	*s;
@@ -61,7 +61,7 @@ int	nbrprecision(x_list *list)
 }
 
 static
-int	strprecision(x_list *list)
+int	strprecision(t_plist *list)
 {
 	int		i;
 
@@ -76,7 +76,7 @@ int	strprecision(x_list *list)
 }
 
 static
-int	addspacing(x_list *list)
+int	addspacing(t_plist *list)
 {
 	int		i;
 	int		i2;
@@ -101,11 +101,13 @@ int	addspacing(x_list *list)
 	return (1);
 }
 
-int	completelist(x_list *list)
+int	completelist(t_plist *list)
 {
 	while (list)
 	{
-		if (findchrchr(list->type, list->setnb) && list->precision >= 0)
+		if (!list->sraw[0] && list->type == 'c')
+			list->formatted_len--;
+		if (findchrchr(list->type, PF_SET_NB) && list->precision >= 0)
 		{
 			if (!nbrprecision(list))
 				return (0);
@@ -116,8 +118,8 @@ int	completelist(x_list *list)
 				return (0);
 		}
 		list->s = list->sraw;
-		if (findchrchr(list->type, list->set)
-			 && (list->formatted_len - (int)ft_strlen(list->sraw)) > 0)
+		if (findchrchr(list->type, PF_SET_ALL)
+			&& (list->formatted_len - (int)ft_strlen(list->sraw)) > 0)
 		{
 			if (!addspacing(list))
 				return (0);

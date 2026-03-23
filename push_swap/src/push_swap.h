@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 18:06:53 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:18:12 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,9 @@ int 	sort3_a(x_list **a, x_list **b, int k);
 int		sort3_b_pa(x_list **a, x_list **b, int k);
 int		find_median(x_list *a);
 int		find_median_end(x_list *a);
-int		get_size(x_list *x);
-int		get_size_end(x_list *x);
+int		get_size_p(x_list *x);
+int 	get_size(x_list *x);
+int		get_size_end_p(x_list *x);
 int		p_to_null(x_list *a);
 int		sorted(x_list *a);
 int		get_last(x_list *x);

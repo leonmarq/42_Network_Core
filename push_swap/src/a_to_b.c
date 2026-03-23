@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:09 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 18:07:25 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:18:11 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ int	a_to_b2(x_list **a, x_list **b, int p, int k)
 			(*b)->p = p;
 		}
 		else
-		{
 			ra(a);
-			ra_count++;
-		}
 		i++;
 	}
+	if (get_size_p(*a) == get_size(*a))
+		return (0);
 	while (ra_count-- > 0)
 		rra(a);
 	return (0);
@@ -52,13 +51,14 @@ int	a_to_b(x_list **a, x_list **b)
 		p = 1;
 	else
 		p = (*b)->p + 1;
-	k = get_size(*a);
+	k = get_size_p(*a);
 	if (k <= 3)
 	{
 		sort3_a(a, b, k);
 		return (0);
 	}
-	a_to_b2(a, b, p, k);
+	else
+		a_to_b2(a, b, p, k);
 	if (sorted(*a))
 		return (0);
 	return (1);
@@ -101,7 +101,7 @@ int	a_to_b_rev(x_list **a, x_list **b)
 	if (!(*a) || sorted(*a))
 		return (0);
 	p = (*b)->p + 1;
-	k = get_size_end(*a);
+	k = get_size_end_p(*a);
 	if (k <= 3)
 	{
 		p = k;

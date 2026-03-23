@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:20 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 16:09:58 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:15:50 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	push_swap(x_list **a, x_list **b)
 		temp = temp->next;
 	}
 	temp = *a;
-	i = get_size(*a);
+	i = get_size_p(*a);
 	if (i == 2)
 	{
 		if ((*a)->x > (*a)->next->x)

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:21 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 17:59:49 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:18:11 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ x_list	*get_index(x_list *x, int p)
 	return x;
 }
 
-int	get_size_end(x_list *x)
+int	get_size_end_p(x_list *x)
 {
 	x_list	*tmp;
 	int		p;
@@ -45,7 +45,20 @@ int	get_size_end(x_list *x)
 	return (res);
 }
 
-int	get_size(x_list *x)
+int get_size(x_list *x)
+{
+	int res;
+
+	res = 0;
+	while (x)
+	{
+		x = x->next;
+		res++;
+	}
+	return (res);
+}
+
+int	get_size_p(x_list *x)
 {
 	int	res;
 	int	p;

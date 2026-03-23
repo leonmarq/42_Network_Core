@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:13 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 17:28:13 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:18:11 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	b_to_a(x_list **a, x_list **b)
 		printlists(*a, *b);
 	if (!(*b))
 		return (0);
-	k = get_size(*b);
+	k = get_size_p(*b);
 	p = (*a)->p + 1;
 	if (k <= 3)
 	{
@@ -94,12 +94,12 @@ int	b_to_a_rev(x_list **a, x_list **b)
 		printlists(*a, *b);
 	if (!(*b))
 		return (0);
-	k = get_size_end(*b);
+	k = get_size_end_p(*b);
 	p = (*a)->p + 1;
 	m = k;
 	if (k <= 3)
 	{
-		if (k < get_size(*b) && (*b)->p > 1)
+		if (k < get_size_p(*b) && (*b)->p > 1)
 		{
 			while (m-- > 0)
 				rrb(b);

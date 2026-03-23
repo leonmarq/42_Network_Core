@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:13 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 18:18:11 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 19:53:31 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int	b_to_a2(x_list **a, x_list **b, int p, int k)
 		{
 			pa(a, b);
 			(*a)->p = p;
-			if ((*a)->x == m)
+			if ((*a)->x == m && (*a)->x > get_last(*a))
 				ra(a);
 		}
 		else
 			rb(b);
 		k--;
 	}
-	rra(a);
+	while (get_last_p(*a) != 0)
+		rra(a);
 	return (0);
 }
 

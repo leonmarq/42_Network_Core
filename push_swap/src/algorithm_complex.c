@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:10 by leon              #+#    #+#             */
-/*   Updated: 2026/03/20 12:32:17 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 20:01:54 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	recursive_main(x_list **a, x_list **b)
 	if ((*b)->x > get_last(*b))
 	{
 		k = b_to_a(a, b);
+		if (sorted(*a))
+			p_to_null(*a);
 		if (k == 2)
 			recursive_main(a, b);
 		else if (!k)

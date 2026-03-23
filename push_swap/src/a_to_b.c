@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:09 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 18:18:11 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:30:26 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	a_to_b2(x_list **a, x_list **b, int p, int k)
 			(*b)->p = p;
 		}
 		else
+		{
 			ra(a);
+			ra_count++;
+		}
 		i++;
 	}
 	if (get_size_p(*a) == get_size(*a))

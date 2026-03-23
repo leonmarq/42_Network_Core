@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC	:= gcc
+CC	:= cc
 CFLAGS	:= -Werror -Wall -Wextra
 LFLAGS	:= -crs
 BLFLAGS	:= -rvs
@@ -24,7 +24,6 @@ SRC	:= ft_memset.c ft_memcpy.c ft_bzero.c ft_atoi.c ft_memmove.c \
 		ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
     		ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 OBJ	:= $(SRC:.c=.o)
-OBJB	:= $(SRCB:.c=.o)
 
 all: $(NAME) clean
 
@@ -35,12 +34,6 @@ $(NAME): $(OBJ)
 
 $(OBJ):
 	$(CC) $(CFLAGS) -c $(SRC)
-
-bonus: cbonus clean
-
-cbonus:
-	$(CC) $(CFLAGS) -c $(SRCB)
-	ar $(BLFLAGS) $(NAME) $(OBJB)
 
 clean:
 	rm -f *.o

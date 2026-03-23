@@ -2,8 +2,8 @@ CC		:= gcc
 CFLAGS	:= -Wall -Wextra -Werror
 NAME	:= push_swap
 
-LIBFT_DIR	:= libft
-LIBFT		:= $(LIBFT_DIR)/libft.a
+PRINTFD_DIR		:= ft_dprintf
+LIBFTPRINTFD	:= $(PRINTFD_DIR)/libftprintfd.a
 
 SRC_DIR	:= src
 SRCS	:= main.c \
@@ -19,24 +19,26 @@ SRCS	:= main.c \
 		$(SRC_DIR)/small_funcs.c \
 		$(SRC_DIR)/sort3.c \
 		$(SRC_DIR)/a_to_b.c \
-		$(SRC_DIR)/b_to_a.c
+		$(SRC_DIR)/b_to_a.c \
+		$(SRC_DIR)/debug_utils.c \
+		$(SRC_DIR)/benchmark.c
 OBJS	:= $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(NAME): $(LIBFTPRINTFD) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTPRINTFD) -o $(NAME)
 	$(MAKE) clean
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+$(LIBFTPRINTFD):
+	$(MAKE) -C $(PRINTFD_DIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) *.o
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(PRINTFD_DIR) fclean
 
 fclean: clean
 	rm -f $(NAME)

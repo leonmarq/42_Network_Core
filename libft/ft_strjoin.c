@@ -27,12 +27,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	res = malloc(i + i2 + 1);
 	if (!res)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[++i])
 		res[i] = s1[i];
-		i++;
-	}
 	i2 = 0;
 	while (s2[i2])
 	{

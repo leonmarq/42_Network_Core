@@ -6,18 +6,18 @@
 #    By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/06 13:40:33 by lmarquar          #+#    #+#              #
-#    Updated: 2026/03/17 09:37:57 by leonmarq         ###   ########.fr        #
+#    Updated: 2026/03/22 16:44:47 by leonmarq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		:= gcc
+CC		:= cc
 CFLAGS	:= -Wall -Werror -Wextra
 LFLAGS	:= -crs
 NAME	:= libftprintf.a
 SUBDIR	:= libft/
 SUBAR	:= libft/libft.a
 PSRC	:= ft_printf.c ft_createstr.c ft_fillist.c \
-			 ft_utils.c ft_completelist.c
+			 ft_utils.c ft_completelist.c ft_hex.c
 LOBJ	:= ft_memset.o ft_memcpy.o ft_bzero.o ft_atoi.o ft_memmove.o \
     		ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o \
 		ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_isalpha.o ft_isdigit.o ft_isalnum.o \
@@ -28,7 +28,10 @@ LOBJ	:= ft_memset.o ft_memcpy.o ft_bzero.o ft_atoi.o ft_memmove.o \
     		ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o
 POBJ	:= $(PSRC:.c=.o)
 
-all: $(SUBAR) $(NAME)
+all: $(SUBAR) $(NAME) clean
+
+bonus: all
+
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:53:42 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/17 14:10:26 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/21 14:20:26 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 #  define MAX_FD 1024
 # endif
 
+# define GNL_EOF_NO_DATA 0
+# define GNL_LINE_COMPLETE 1
+# define GNL_NEED_MORE 2
+# define GNL_ERROR -1
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
@@ -33,6 +38,7 @@ typedef struct s_line
 }	t_line;
 
 char	*get_next_line(int fd);
+void	free_n(char **p);
 void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

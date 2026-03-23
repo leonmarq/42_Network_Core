@@ -6,17 +6,17 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:39:59 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/17 09:33:48 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 09:12:41 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
 static
-int	listputprecision(x_list *list, const char *format, int i, va_list args)
+int	listputprecision(t_plist *list, const char *format, int i, va_list args)
 {
 	i++;
-	if (findchr(format, i, list->setnocp))
+	if (findchr(format, i, PF_SET_NO_CP))
 		list->precision = 0;
 	else if (format[i] == '*')
 	{
@@ -25,7 +25,7 @@ int	listputprecision(x_list *list, const char *format, int i, va_list args)
 	}
 	else if (format[i] >= '0' && format[i] <= '9')
 		list->precision = strtonb(format, &i);
-	if (findchr(format, i, list->setnocp))
+	if (findchr(format, i, PF_SET_NO_CP))
 		list->type = format[i++];
 	else
 		return (0);
@@ -33,7 +33,7 @@ int	listputprecision(x_list *list, const char *format, int i, va_list args)
 }
 
 static
-int	listputformat2(x_list *list, const char *format, int i, va_list args)
+int	listputformat2(t_plist *list, const char *format, int i, va_list args)
 {
 	if (format[i] == '-')
 		list->minus = 1;
@@ -41,17 +41,17 @@ int	listputformat2(x_list *list, const char *format, int i, va_list args)
 		i++;
 	if (format[i] == '*')
 	{
-		list->nbr = va_arg(args, int);
-		if (list->nbr < 0)
+		list->formatted_len = va_arg(args, int);
+		if (list->formatted_len < 0)
 		{
-			list->nbr = list->nbr * -1;
+			list->formatted_len = list->formatted_len * -1;
 			list->minus = 1;
 		}
 		i++;
 	}
 	else if (format[i] >= '0' && format[i] <= '9')
-		list->nbr = strtonb(format, &i);
-	if (findchr(format, i, list->set))
+		list->formatted_len = strtonb(format, &i);
+	if (findchr(format, i, PF_SET_ALL))
 		list->type = format[i++];
 	else if (format[i] == '.')
 		i = listputprecision(list, format, i, args);
@@ -63,7 +63,7 @@ int	listputformat2(x_list *list, const char *format, int i, va_list args)
 }
 
 static
-int	listputformat(x_list *list, const char *format, int i, va_list args)
+int	listputformat(t_plist *list, const char *format, int i, va_list args)
 {
 	if (format[++i] == '0')
 	{
@@ -77,11 +77,11 @@ int	listputformat(x_list *list, const char *format, int i, va_list args)
 			list->precision = strtonb(format, &i);
 		if (format[i] == '.')
 		{
-			list->nbr = list->precision;
+			list->formatted_len = list->precision;
 			list->nul = 0;
 			i = listputprecision(list, format, i, args);
 		}
-		else if (findchr(format, i, list->setnb))
+		else if (findchr(format, i, PF_SET_NB))
 			list->type = format[i++];
 		else
 			return (0);
@@ -92,7 +92,7 @@ int	listputformat(x_list *list, const char *format, int i, va_list args)
 	return (i);
 }
 
-int	filllist(x_list *list, const char *format, va_list args)
+int	filllist(t_plist *list, const char *format, va_list args)
 {
 	int	i;
 	int	start;
@@ -101,7 +101,7 @@ int	filllist(x_list *list, const char *format, va_list args)
 	start = 0;
 	if (!format[i])
 		list->sraw = ft_strdup("");
-	while (format[i])
+	while (format[i] && list)
 	{
 		if (format[i] != '%')
 		{

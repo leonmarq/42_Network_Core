@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:39:52 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/17 10:28:42 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/22 15:48:22 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,66 +38,6 @@ char	*nbtostr(long long n)
 }
 
 static
-char	*tobighex(unsigned long decnum)
-{
-	char	*res;
-	long	i;
-	unsigned long	temp;
-
-	i = 0;
-	temp = decnum;
-	while (temp != 0)
-	{
-		temp = temp / 16;
-		i++;
-	}
-	res = ft_calloc(i + 2, 1);
-	if (!res)
-		return (NULL);
-	if (decnum == 0)
-		res[0] = '0';
-	while (decnum != 0 && --i >= 0)
-	{
-		temp = decnum % 16;
-		res[i] = 'A' + (temp - 10);
-		if (temp < 10)
-			res[i] = '0' + temp;
-		decnum = decnum / 16;
-	}
-	return (res);
-}
-
-static
-char	*tosmallhex(unsigned long decnum)
-{
-	char			*res;
-	long			i;
-	unsigned long	temp;
-
-	i = 0;
-	temp = decnum;
-	while (temp != 0)
-	{
-		temp = temp / 16;
-		i++;
-	}
-	res = ft_calloc(i + 2, 1);
-	if (!res)
-		return (NULL);
-	if (decnum == 0)
-		res[0] = '0';
-	while (decnum != 0 && --i >= 0)
-	{
-		temp = decnum % 16;
-		res[i] = 'a' + (temp - 10);
-		if (temp < 10)
-			res[i] = '0' + temp;
-		decnum = decnum / 16;
-	}
-	return (res);
-}
-
-static
 char	*ptostr(char *ptr)
 {
 	int		i;
@@ -105,7 +45,7 @@ char	*ptostr(char *ptr)
 	char	*res;
 
 	if (!ptr)
-        return (ft_strdup("(nil)"));
+		return (ft_strdup("(nil)"));
 	i = 0;
 	s = tosmallhex((unsigned long) ptr);
 	if (!s)
@@ -125,6 +65,20 @@ char	*ptostr(char *ptr)
 	}
 	free (s);
 	return (res);
+}
+
+char	*handle_c_or_percent(va_list args, char c)
+{
+	char	*s;
+
+	s = ft_calloc(2, 1);
+	if (!s)
+		return (NULL);
+	if (c == 'c')
+		s[0] = (char)va_arg(args, int);
+	else
+		s[0] = '%';
+	return (s);
 }
 
 char	*createstr(va_list args, char c)
@@ -151,14 +105,6 @@ char	*createstr(va_list args, char c)
 	else if (c == 'X')
 		s = tobighex(va_arg(args, unsigned));
 	else if (c == 'c' || c == '%')
-	{
-		s = ft_calloc(2, 1);
-		if (!s)
-			return (NULL);
-		if (c == 'c')
-			s[0] = (char)va_arg(args, int);
-		else
-			s[0] = '%';
-	}
+		s = handle_c_or_percent(args, c);
 	return (s);
 }

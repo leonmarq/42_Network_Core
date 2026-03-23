@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:40:24 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/17 09:33:48 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:07:00 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,19 @@ int	strtonb(const char *s, int *i)
 	return (res);
 }
 
-x_list	*emptylist(void)
+t_plist	*emptylist(void)
 {
-	x_list	*res;
+	t_plist	*res;
 
-	res = malloc(sizeof(x_list));
+	res = ft_calloc(1, sizeof(t_plist));
 	if (!res)
 		return (res);
-	res->set = ft_strdup("cspdiuxX%");
-	res->setnb = ft_strdup("diuxX%");
-	res->setnocp = ft_strdup("sdiuxX");
-	if (!res->set || !res->setnb || !res->setnocp)
-		return (NULL);
 	res->type = 0;
 	res->sraw = NULL;
 	res->s = NULL;
 	res->minus = 0;
 	res->nul = 0;
-	res->nbr = 0;
+	res->formatted_len = 0;
 	res->precision = -1;
 	res->next = NULL;
 	return (res);

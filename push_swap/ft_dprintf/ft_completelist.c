@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:39:44 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/22 11:02:54 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:03:12 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,21 @@ int	addspacing(x_list *list)
 	int		i;
 	int		i2;
 
-	list->s = ft_calloc(list->nbr + 1, 1);
+	list->s = ft_calloc(list->formatted_len + 1, 1);
 	if (!list->s)
 		return (0);
 	i = 0;
 	i2 = 0;
 	if (!list->minus)
 	{
-		while (i < (list->nbr - (int)ft_strlen(list->sraw)))
+		while (i < (list->formatted_len - (int)ft_strlen(list->sraw)))
 			list->s[i++] = ' ';
 	}
 	while (list->sraw[i2])
 		list->s[i++] = list->sraw[i2++];
 	if (list->minus)
 	{
-		while (i < list->nbr)
+		while (i < list->formatted_len)
 			list->s[i++] = ' ';
 	}
 	return (1);
@@ -117,7 +117,7 @@ int	completelist(x_list *list)
 		}
 		list->s = list->sraw;
 		if (findchrchr(list->type, list->set)
-			 && (list->nbr - (int)ft_strlen(list->sraw)) > 0)
+			 && (list->formatted_len - (int)ft_strlen(list->sraw)) > 0)
 		{
 			if (!addspacing(list))
 				return (0);

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:40:24 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/22 11:02:54 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:07:00 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ x_list	*emptylist(void)
 	res->s = NULL;
 	res->minus = 0;
 	res->nul = 0;
-	res->nbr = 0;
+	res->formatted_len = 0;
 	res->precision = -1;
 	res->next = NULL;
 	return (res);

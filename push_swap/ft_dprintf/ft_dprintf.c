@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:40:05 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/22 11:04:20 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:03:12 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	cleanlist(x_list *list)
 		free(list->set);
 		free(list->setnocp);
 		free(list->setnb);
-		if (!((list->nbr - (int)ft_strlen(list->sraw)) <= 0))
+		if (!((list->formatted_len - (int)ft_strlen(list->sraw)) <= 0))
 			free(list->s);
 		free(list->sraw);
 		temp = list->next;
@@ -67,7 +67,7 @@ int	checksraw(x_list *list)
 		if (!list->sraw)
 			return (0);
 		if (!list->sraw[0] && list->type == 'c')
-			list->nbr--;
+			list->formatted_len--;
 		list = list->next;
 	}
 	return (1);

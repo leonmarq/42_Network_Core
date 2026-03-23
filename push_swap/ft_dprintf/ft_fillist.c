@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:39:59 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/22 11:02:54 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:03:12 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ int	listputformat2(x_list *list, const char *format, int i, va_list args)
 		i++;
 	if (format[i] == '*')
 	{
-		list->nbr = va_arg(args, int);
-		if (list->nbr < 0)
+		list->formatted_len = va_arg(args, int);
+		if (list->formatted_len < 0)
 		{
-			list->nbr = list->nbr * -1;
+			list->formatted_len = list->formatted_len * -1;
 			list->minus = 1;
 		}
 		i++;
 	}
 	else if (format[i] >= '0' && format[i] <= '9')
-		list->nbr = strtonb(format, &i);
+		list->formatted_len = strtonb(format, &i);
 	if (findchr(format, i, list->set))
 		list->type = format[i++];
 	else if (format[i] == '.')
@@ -77,7 +77,7 @@ int	listputformat(x_list *list, const char *format, int i, va_list args)
 			list->precision = strtonb(format, &i);
 		if (format[i] == '.')
 		{
-			list->nbr = list->precision;
+			list->formatted_len = list->precision;
 			list->nul = 0;
 			i = listputprecision(list, format, i, args);
 		}

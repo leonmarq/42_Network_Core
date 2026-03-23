@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+static
 char	*strat_toString(int strat)
 {
 	if (strat == SIMPLE)
@@ -12,6 +13,13 @@ char	*strat_toString(int strat)
 		return ("Adaptive / O(n log n)");
 	else
 		return ("DEFAULT");
+}
+
+int bench_conditional_increment(t_bench *x, int op)
+{
+	if (x)
+		x->op[op]++;
+	return (0);
 }
 
 void	bench_print_report(t_bench *b, int strat, double disorder_percent)

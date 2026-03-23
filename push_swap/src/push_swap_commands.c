@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:56 by leon              #+#    #+#             */
-/*   Updated: 2026/03/20 10:20:45 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 14:36:04 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	sa(x_list *a)
 	a->x = a->next->x;
 	a->next->x = temp;
 	write (1, "sa\n", 3);
+	bench_conditional_increment(a->opts->bench, OP_SA);
 	return (1);
 }
 
@@ -39,6 +40,7 @@ int	sb(x_list *b)
 	b->x = b->next->x;
 	b->next->x = temp;
 	write (1, "sb\n", 3);
+	bench_conditional_increment(b->opts->bench, OP_SB);
 	return (1);
 }
 
@@ -57,6 +59,7 @@ int	ss(x_list *a, x_list *b)
 	a->x = a->next->x;
 	a->next->x = temp;
 	write(1, "ss\n", 3);
+	bench_conditional_increment(a->opts->bench, OP_SS);
 	return (1);
 }
 
@@ -71,6 +74,7 @@ int	pa(x_list **a, x_list **b)
 	(*a) = (*b);
 	(*b) = newb;
 	write(1, "pa\n", 3);
+	bench_conditional_increment((*a)->opts->bench, OP_PA);
 	return (1);
 }
 
@@ -85,5 +89,6 @@ int	pb(x_list **a, x_list **b)
 	(*b) = (*a);
 	(*a) = newa;
 	write(1, "pb\n", 3);
+	bench_conditional_increment((*b)->opts->bench, OP_PB);
 	return (1);
 }

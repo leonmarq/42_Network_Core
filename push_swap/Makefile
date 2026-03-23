@@ -1,6 +1,7 @@
 CC		:= gcc
 CFLAGS	:= -Wall -Wextra -Werror
 NAME	:= push_swap
+VISUALIZER	:= push_swap_visualizer/push_swap-visualizer
 
 PRINTFD_DIR		:= ft_dprintf
 LIBFTPRINTFD	:= $(PRINTFD_DIR)/libftprintfd.a
@@ -45,4 +46,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+visualizer: $(NAME)
+	./$(VISUALIZER)
+
+revisualizer: re
+	./$(VISUALIZER)
+
+.PHONY: all clean fclean re visualizer revisualizer

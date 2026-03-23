@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 12:15:43 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 14:36:22 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ typedef struct p_list
 	struct p_list	*next;
 }	x_list;
 
-void	bench_reset(void);
-void	bench_enable(int enabled);
-void	bench_count(t_op_type op);
+int		bench_conditional_increment(t_bench *x, int op);
 void 	bench_print_report(t_bench *b, int strat, double disorder_percent);
 
 int		printlists(x_list *a, x_list *b);

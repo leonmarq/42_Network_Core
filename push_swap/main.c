@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 13:17:26 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 14:44:25 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,28 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 {
 	int		i;
+	long 	v;
 
 	if (parse_opts(argc, argv, opts))
 		return (1);
 	i = opts->first_value;
-	while (i < (argc - 1))
+	while (i < argc)
 	{
-		a->next = NULL;
-		if (!a || ft_atoicheck(argv[i + 1]) == (long)2147483648)
+		if (!a)
 			return (1);
-		a->x = (int)ft_atoicheck(argv[i + 1]);
+		v = ft_atoicheck(argv[i]);
+		if (v == (long)2147483648)
+			return (1);
+		a->x = (int)v;
 		a->p = 0;
-		if (!(++i < (argc - 1)))
+		a->next = NULL;
+		a->opts = opts;
+		i++;
+		if (i >= argc)
 			break ;
 		a->next = ft_calloc(1, sizeof(x_list));
-		a->opts = opts;
+		if (!a->next)
+			return (1);
 		a = a->next;
 	}
 	a->next = NULL;
@@ -134,12 +141,17 @@ int	ps_free_list(x_list *a)
 {
 	x_list	*temp;
 
+	if (!a)
+		return (0);
+	if (a->opts && a->opts->bench)
+		free(a->opts->bench);
 	while (a)
 	{
 		temp = a;
 		a = a->next;
 		free(temp);
 	}
+
 	return (0);
 }
 

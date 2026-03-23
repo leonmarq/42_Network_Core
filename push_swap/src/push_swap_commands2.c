@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:23 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 14:36:55 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ra(x_list **a)
 	temp->next = (*a);
 	(*a) = news;
 	write(1, "ra\n", 3);
+	bench_conditional_increment((*a)->opts->bench, OP_RA);
 	return (1);
 }
 
@@ -45,6 +46,7 @@ int	rb(x_list **b)
 	temp->next = (*b);
 	(*b) = news;
 	write(1, "rb\n", 3);
+	bench_conditional_increment((*b)->opts->bench, OP_RB);
 	return (1);
 }
 
@@ -72,5 +74,6 @@ int	rr(x_list **a, x_list **b)
 	temp->next = (*b);
 	(*b) = news;
 	write(1, "rr\n", 3);
+	bench_conditional_increment((*a)->opts->bench, OP_RR);
 	return (1);
 }

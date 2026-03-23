@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:09 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 17:48:02 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:07:25 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	a_to_b(x_list **a, x_list **b)
 	k = get_size(*a);
 	if (k <= 3)
 	{
-		sort3(a, b, k);
+		sort3_a(a, b, k);
 		return (0);
 	}
 	a_to_b2(a, b, p, k);
@@ -107,7 +107,7 @@ int	a_to_b_rev(x_list **a, x_list **b)
 		p = k;
 		while (p-- > 0)
 			rra(a);
-		sort3(a, b, k);
+		sort3_a(a, b, k);
 		return (0);
 	}
 	a_to_b_rev2(a, b, p, k);

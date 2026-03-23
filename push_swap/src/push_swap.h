@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 16:08:22 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/23 18:06:53 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		b_to_a(x_list **a, x_list **b);
 int		b_to_a_rev(x_list **a, x_list **b);
 int		a_to_b(x_list **a, x_list **b);
 int		a_to_b_rev(x_list **a, x_list **b);
-int		sort3(x_list **a, x_list **b, int k);
+int 	sort3_a(x_list **a, x_list **b, int k);
 int		sort3_b_pa(x_list **a, x_list **b, int k);
 int		find_median(x_list *a);
 int		find_median_end(x_list *a);

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:09 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 13:56:37 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:01:36 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	a_to_b2(x_list **a, x_list **b)
 	if (!(*b))
 		new_p = 1;
 	else
-		new_p = (*b)->p + 1;
+		new_p = get_biggest_p(*b) + 1;
 	m = find_median(*a);
 	i = 0;
 	k = get_size_p(*a);
@@ -66,7 +66,7 @@ int	a_to_b_rev2(x_list **a, x_list **b)
 	int	new_p;
 	int	k;
 
-	new_p = (*b)->p + 1;
+	new_p = get_biggest_p(*b) + 1;
 	k = get_size_end_p(*a);
 	m = find_median_end(*a);
 	i = 0;

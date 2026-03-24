@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:13 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 12:38:29 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:14:25 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,32 +87,101 @@ int	b_to_a_rev2(x_list **a, x_list **b)
 	return (0);
 }
 
+int sort2_b_pa_rev(x_list **a, x_list **b)
+{
+	rrb(b);
+	if ((*b)->x > get_last(*b))
+	{
+		pa(a, b);
+		rrb(b);
+		pa(a, b);
+	}
+	else
+	{
+		rrb(b);
+		pa(a, b);
+		pa(a, b);
+	}
+	return (0);
+}
+
 int	sort3_b_pa_rev(x_list **a, x_list **b)
 {
 	int k;
 
 	k = get_size_end_p(*b);
-	while (k > 0)
+	if (!k)
+		return (0);
+	if (k == 1)
 	{
 		rrb(b);
-		k--;
+		pa(a, b);
 	}
-	sort3_b_pa(a, b, get_size_p(*b));
+	else if (k == 2)
+		sort2_b_pa_rev(a, b);
+	else
+	{
+		rrb(b);
+		if (get_biggest(*b) == (*b)->x)
+		{
+			pa(a, b);
+			rrb(b);
+			if (get_biggest(*b) == (*b)->x)
+			{
+				pa(a, b);
+				rrb(b);
+			}
+			else
+			{
+				rrb(b);
+				pa(a, b);
+			}
+		}
+		else
+		{
+			rrb(b);
+			if (get_biggest(*b) == (*b)->x)
+			{
+				pa(a, b);
+				if (get_biggest(*b) == (*b)->x)
+				{
+					pa(a, b);
+					rrb(b);
+				}
+				else
+				{
+					rrb(b);
+					pa(a, b);
+				}
+			}
+			else
+			{
+				rrb(b);
+				pa(a, b);
+				if ((*b)->x > (*b)->next->x)
+					pa(a, b);
+				else
+				{
+					sb(*b);
+					pa(a, b);
+				}
+			}
+		}
+		pa(a, b);
+	}
 	return (0);
 }
 
 int	b_to_a_rev(x_list **a, x_list **b)
 {
-	int	k;
 
 	if (!(*b))
 		return (0);
-	k = get_size_end_p(*b);
-	if (k <= 3)
-	{
-		return sort3_b_pa_rev(a, b);
-	}
+	if (get_size_end_p(*b) <= 3)
+		sort3_b_pa_rev(a, b);
 	else
 		b_to_a_rev2(a, b);
+	if (check_sorted(*a))
+		return (p_to_null(*a));
 	return (1);
 }

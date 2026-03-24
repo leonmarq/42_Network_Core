@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:21 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 18:18:11 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:04:13 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,3 +125,18 @@ int	err(void)
 	}
 	return (-1);
 }
+
+int	get_biggest_p(x_list *x)
+{
+	int biggest;
+
+	biggest = x->p;
+	while (x)
+	{
+		if (x->p > biggest)
+			biggest = x->p;
+		x = x->next;
+	}
+	return (biggest);
+}
+

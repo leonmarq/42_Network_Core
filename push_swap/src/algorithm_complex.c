@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:10 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 14:01:39 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 15:42:31 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	loop(x_list **a, x_list **b)
 			loop_a_to_b(a, b);
 			progressed = 1;
 		}
-		else
-			p_to_null(*a);
+		p_to_null(*a);
 		if (!(*b))
 			continue ;
 		if ((*a)->opts->debug)

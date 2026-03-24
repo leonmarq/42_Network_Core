@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 10:24:23 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:03:56 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ int		check_sorted(x_list *a);
 int		get_last(x_list *x);
 int		get_last_p(x_list *x);
 int		get_biggest(x_list *x);
+int		get_biggest_p(x_list *x);
+
 int 	min(int a, int b);
 x_list	*get_index(x_list *x, int p);
 

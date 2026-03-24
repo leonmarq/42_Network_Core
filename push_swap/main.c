@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 16:08:55 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 20:15:53 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 {
 	int		i;
-	long 	v;
 
 	if (parse_opts(argc, argv, opts))
 		return (1);
@@ -67,10 +66,9 @@ int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 	{
 		if (!a)
 			return (1);
-		v = ft_atoicheck(argv[i]);
-		if (v == (long)2147483648)
+		if (ft_atoicheck(argv[i]) == (long)2147483648)
 			return (1);
-		a->x = (int)v;
+		a->x = (int)ft_atoicheck(argv[i]);
 		a->p = 0;
 		a->next = NULL;
 		a->opts = opts;
@@ -84,34 +82,6 @@ int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 	}
 	a->next = NULL;
 	return (0);
-}
-
-double compute_disorder(x_list *a)
-{
-	double	mistakes;
-	double	total_pairs;
-	x_list	*i;
-	x_list	*j;
-
-	mistakes = 0.0;
-	total_pairs = 0.0;
-	i = 0;
-	i = a;
-	while (i && i->next)
-	{
-		j = i->next;
-		while (j)
-		{
-			total_pairs += 1.0;
-			if (i->x > j->x)
-				mistakes += 1.0;
-			j = j->next;
-		}
-		i = i->next;
-	}
-	if (total_pairs == 0.0)
-		return (0.0);
-	return ((mistakes * 100.0) / total_pairs);
 }
 
 int	check_list(x_list *a)
@@ -142,43 +112,17 @@ int	check_list(x_list *a)
 	return (0);
 }
 
-int	ps_free_list(x_list *a)
-{
-	x_list	*temp;
-
-	if (!a)
-		return (0);
-	if (a->opts && a->opts->bench)
-		free(a->opts->bench);
-	while (a)
-	{
-		temp = a;
-		a = a->next;
-		free(temp);
-	}
-
-	return (0);
-}
-
-
-
 int	main(int argc, char **argv)
 {
-	x_list		*a;
-	x_list		*b;
-	t_opts		o;
+	x_list	*a;
+	x_list	*b;
+	t_opts	o;
 
 	if (argc < 2)
 		return (0);
 	a = malloc(sizeof(x_list));
 	b = NULL;
-	if (fill_list(a, argc, argv, &o) != 0)
-	{
-		err();
-		ps_free_list(a);
-		return (1);
-	}
-	if (check_list(a) != 0)
+	if (fill_list(a, argc, argv, &o) != 0 || check_list(a) != 0)
 	{
 		err();
 		ps_free_list(a);

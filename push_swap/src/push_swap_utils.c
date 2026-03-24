@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:21 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 16:04:13 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 20:14:20 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,23 @@ int	get_size_p(x_list *x)
 		res++;
 	}
 	return (res);
+}
+
+int	ps_free_list(x_list *a)
+{
+	x_list	*temp;
+
+	if (!a)
+		return (0);
+	if (a->opts && a->opts->bench)
+		free(a->opts->bench);
+	while (a)
+	{
+		temp = a;
+		a = a->next;
+		free(temp);
+	}
+	return (0);
 }
 
 static

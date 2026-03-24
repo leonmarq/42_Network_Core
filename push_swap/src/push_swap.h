@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 16:03:56 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 20:14:39 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct p_list
 	struct p_list	*next;
 }	x_list;
 
+double	compute_disorder(x_list *a);
 int		bench_conditional_increment(t_bench *x, int op);
 void 	bench_print_report(t_bench *b, int strat, double disorder_percent);
 
@@ -73,6 +74,7 @@ int		printlists(x_list *a, x_list *b);
 int		push_swap(x_list **a, x_list **b);
 long	ft_atoicheck(char *nptr);
 int		err(void);
+int		ps_free_list(x_list *a);
 
 int		sa(x_list *a);
 int		sb(x_list *b);
@@ -106,6 +108,7 @@ int		get_last(x_list *x);
 int		get_last_p(x_list *x);
 int		get_biggest(x_list *x);
 int		get_biggest_p(x_list *x);
+void	free_pslist(x_list *x);
 
 int 	min(int a, int b);
 x_list	*get_index(x_list *x, int p);

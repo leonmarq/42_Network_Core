@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:13 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 18:05:16 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 19:51:09 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	b_to_a(x_list **a, x_list **b)
 		pa(a, b);
 		if (check_sorted(*a))
 			p_to_null(*a);
+		if (!(*b))
+			return (0);
 		if (get_biggest_p(*b) != (*b)->p)
 			return (2);
 	}

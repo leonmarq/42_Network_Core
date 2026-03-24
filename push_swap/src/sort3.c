@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:31 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 10:48:34 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:43:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,18 @@ int	sort3_b_pa(x_list **a, x_list **b, int k)
 		if ((*b)->next->next-> x > (*b)->x && (*b)->next->next->x > (*b)->next->x)
 		{
 			rb(b);
-			if ((*b)->x < (*b)->next->x)
-				sb(*b);
+			sb(*b);
 			pa(a, b);
-			pa(a, b);
-			rrb(b);
+			if ((*b)->x < get_last(*b))
+			{
+				rrb(b);
+				pa(a, b);
+			}
+			else
+			{
+				pa(a, b);
+				rrb(b);
+			}
 			pa(a, b);
 		}
 		else if ((*b)->next->x > (*b)->x && (*b)->next->x > (*b)->next->next->x)

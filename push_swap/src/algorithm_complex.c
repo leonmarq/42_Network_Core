@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:10 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 13:24:05 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 13:35:54 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	loop(x_list **a, x_list **b)
 	progressed = 1;
 	while (progressed)
 	{
+		if ((*a)->opts->debug)
+			printlists(*a, *b);
 		progressed = 0;
 		if (!check_sorted(*a))
 		{

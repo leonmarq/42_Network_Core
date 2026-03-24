@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:09 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 16:01:36 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:51:51 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@ int	a_to_b2(x_list **a, x_list **b)
 		{
 			pb(a, b);
 			(*b)->p = new_p;
+			if ((*b)->x == m)
+				rb(b);
 		}
 		else
 			ra(a);
+
 		i++;
 	}
+	if (get_last(*b) == m)
+		rrb(b);
 	return (0);
 }
 
@@ -77,9 +82,13 @@ int	a_to_b_rev2(x_list **a, x_list **b)
 		{
 			pb(a, b);
 			(*b)->p = new_p;
+			if ((*b)->x == m)
+				rb(b);
 		}
 		i++;
 	}
+	if (get_last(*b) == m)
+		rrb(b);
 	return (0);
 }
 

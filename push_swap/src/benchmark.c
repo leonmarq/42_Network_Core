@@ -18,7 +18,10 @@ char	*strat_toString(int strat)
 int bench_conditional_increment(t_bench *x, int op)
 {
 	if (x)
+	{
+		x->total++;
 		x->op[op]++;
+	}
 	return (0);
 }
 

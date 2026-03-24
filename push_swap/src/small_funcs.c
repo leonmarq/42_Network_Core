@@ -24,17 +24,20 @@ int	p_to_null(x_list *a)
 
 int	sorted(x_list *a)
 {
+	x_list	*head;
+
 	if (!a)
 		return (1);
 	if (!(a->next))
 		return (1);
+	head = a;
 	while (a->next)
 	{
 		if (a->x > a->next->x)
 			return (0);
 		a = a->next;
 	}
-	p_to_null(a);
+	p_to_null(head);
 	return (1);
 }
 

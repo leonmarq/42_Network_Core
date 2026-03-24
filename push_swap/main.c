@@ -34,7 +34,10 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 	int	i;
 
 	o->strat = DEFAULT;
+	o->debug = 0;
 	o->bench = NULL;
+	o->disorder = 0.0;
+	o->first_value = 0;
 	i = 1;
 	while (i < argc && ft_strncmp("--", argv[i], 2) == 0)
 	{

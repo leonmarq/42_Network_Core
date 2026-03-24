@@ -1,5 +1,9 @@
 # 42_PushSwap
-it's about sorting numbers
+it's about sorting numbers with two stacks
+
+## Algorithms used
+1. adapted quicksort
+
 
 these numbers alll have to be unique and are handed in as the ./push_swap programs arguments.
 The numbers are sorted using two stacks, stack A & B. stack A is filled up first and B remains empty.

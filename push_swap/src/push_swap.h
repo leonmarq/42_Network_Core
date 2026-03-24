@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 18:18:12 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:24:23 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		get_size_p(x_list *x);
 int 	get_size(x_list *x);
 int		get_size_end_p(x_list *x);
 int		p_to_null(x_list *a);
-int		sorted(x_list *a);
+int		check_sorted(x_list *a);
 int		get_last(x_list *x);
 int		get_last_p(x_list *x);
 int		get_biggest(x_list *x);

@@ -6,15 +6,15 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:10 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 08:55:37 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:34:04 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	recursive_atob(x_list **a, x_list **b)
+int	loop_a_to_b(x_list **a, x_list **b)
 {
-	while (!sorted(*a))
+	while (!check_sorted(*a))
 	{
 		if ((*a)->p >= get_last_p(*a))
 		{
@@ -39,9 +39,9 @@ int	loop(x_list **a, x_list **b)
 	while (progressed == 1)
 	{
 		progressed = 0;
-		if (!sorted(*a))
+		if (!check_sorted(*a))
 		{
-			recursive_atob(a, b);
+			loop_a_to_b(a, b);
 			progressed = 1;
 		}
 		else
@@ -52,8 +52,6 @@ int	loop(x_list **a, x_list **b)
 		{
 			k = b_to_a(a, b);
 			progressed = 1;
-			if (sorted(*a))
-				p_to_null(*a);
 			if (!k)
 				return (0);
 			if (!(*b))
@@ -61,7 +59,7 @@ int	loop(x_list **a, x_list **b)
 			if (k == 2)
 				continue ;
 		}
-		if ((*b)->x < get_last(*b) && sorted(*a))
+		if ((*b)->x < get_last(*b) && check_sorted(*a))
 		{
 			if (!b_to_a_rev(a, b))
 				return (0);

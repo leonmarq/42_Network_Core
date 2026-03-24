@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:27 by leon              #+#    #+#             */
-/*   Updated: 2026/03/20 11:39:09 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:38:57 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	p_to_null(x_list *a)
 	return (0);
 }
 
-int	sorted(x_list *a)
+int	check_sorted(x_list *a)
 {
 	x_list	*head;
 
@@ -37,7 +37,6 @@ int	sorted(x_list *a)
 			return (0);
 		a = a->next;
 	}
-	p_to_null(head);
 	return (1);
 }
 

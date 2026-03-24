@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:27 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 10:38:57 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:41:30 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ int	p_to_null(x_list *a)
 
 int	check_sorted(x_list *a)
 {
-	x_list	*head;
-
 	if (!a)
 		return (1);
 	if (!(a->next))
 		return (1);
-	head = a;
 	while (a->next)
 	{
 		if (a->x > a->next->x)

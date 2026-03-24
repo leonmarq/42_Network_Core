@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:10 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 13:35:54 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:01:39 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	loop_a_to_b(x_list **a, x_list **b)
 {
 	while (!check_sorted(*a))
 	{
-		if ((*a)->opts->debug)
-			printlists(*a, *b);
 		if ((*a)->p >= get_last_p(*a))
 		{
 			if (!a_to_b(a, b))
@@ -51,14 +49,14 @@ int	loop(x_list **a, x_list **b)
 			p_to_null(*a);
 		if (!(*b))
 			continue ;
+		if ((*a)->opts->debug)
+			printlists(*a, *b);
 		if ((*b)->p >= get_last_p(*b))
 		{
 			b_to_a(a, b);
 			progressed = 1;
 		}
-		if (!(*b))
-			continue ;
-		if ((*b)->p < get_last_p(*b))
+		else if ((*b)->p < get_last_p(*b))
 		{
 			b_to_a_rev(a, b);
 			progressed = 1;

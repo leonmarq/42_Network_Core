@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:13 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 19:53:31 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:38:29 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	b_to_a(x_list **a, x_list **b)
 	int	k;
 	int	p;
 
-	if ((*a)->opts->debug)
-		printlists(*a, *b);
 	if (!(*b))
 		return (0);
 	k = get_size_p(*b);
@@ -58,11 +56,15 @@ int	b_to_a(x_list **a, x_list **b)
 }
 
 static
-int	b_to_a_rev2(x_list **a, x_list **b, int p, int k)
+int	b_to_a_rev2(x_list **a, x_list **b)
 {
 	int	m;
 	int did_ra;
+	int k;
+	int p;
 
+	k = get_size_end_p(*b);
+	p = (*a)->p + 1;
 	m = find_median_end(*b);
 	did_ra = 0;
 	while (k > 0)
@@ -85,29 +87,32 @@ int	b_to_a_rev2(x_list **a, x_list **b, int p, int k)
 	return (0);
 }
 
+int	sort3_b_pa_rev(x_list **a, x_list **b)
+{
+	int k;
+
+	k = get_size_end_p(*b);
+	while (k > 0)
+	{
+		rrb(b);
+		k--;
+	}
+	sort3_b_pa(a, b, get_size_p(*b));
+	return (0);
+}
+
 int	b_to_a_rev(x_list **a, x_list **b)
 {
 	int	k;
-	int	m;
-	int	p;
 
-	if ((*a)->opts->debug)
-		printlists(*a, *b);
 	if (!(*b))
 		return (0);
 	k = get_size_end_p(*b);
-	p = (*a)->p + 1;
-	m = k;
 	if (k <= 3)
 	{
-		if (k < get_size_p(*b) && (*b)->p > 1)
-		{
-			while (m-- > 0)
-				rrb(b);
-		}
-		sort3_b_pa(a, b, k);
+		return sort3_b_pa_rev(a, b);
 	}
 	else
-		b_to_a_rev2(a, b, p, k);
+		b_to_a_rev2(a, b);
 	return (1);
 }

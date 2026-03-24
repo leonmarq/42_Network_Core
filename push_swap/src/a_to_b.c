@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:09 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 10:36:02 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:38:05 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ int	a_to_b(x_list **a, x_list **b)
 {
 	int	k;
 
-	if ((*a)->opts->debug)
-		printlists(*a, *b);
-
 	k = get_size_p(*a);
 	if (k <= 3)
 	{
@@ -62,50 +59,54 @@ int	a_to_b(x_list **a, x_list **b)
 }
 
 static
-int	a_to_b_rev2(x_list **a, x_list **b, int p, int k)
+int	a_to_b_rev2(x_list **a, x_list **b)
 {
 	int	m;
 	int	i;
-	int restore_ra;
+	int	new_p;
+	int	k;
 
+	new_p = (*b)->p + 1;
+	k = get_size_end_p(*a);
 	m = find_median_end(*a);
 	i = 0;
-	restore_ra = 0;
 	while (i < k)
 	{
 		rra(a);
 		if ((*a)->x <= m)
 		{
 			pb(a, b);
-			(*b)->p = p;
+			(*b)->p = new_p;
 		}
-		else
-			restore_ra++;
 		i++;
 	}
-	while (restore_ra-- > 0)
-		ra(a);
 	return (0);
+}
+
+int	sort3_a_rev(x_list **a, x_list **b, int k)
+{
+	int	i;
+
+	i = 0;
+	while (i < k)
+	{
+		rra(a);
+		i++;
+	}
+	return sort3_a(a, b, k);
 }
 
 int	a_to_b_rev(x_list **a, x_list **b)
 {
 	int	k;
-	int	p;
 
 	if (!(*a) || check_sorted(*a))
 		return (0);
-	p = (*b)->p + 1;
 	k = get_size_end_p(*a);
 	if (k <= 3)
-	{
-		p = k;
-		while (p-- > 0)
-			rra(a);
-		sort3_a(a, b, k);
-		return (0);
-	}
-	a_to_b_rev2(a, b, p, k);
+		sort3_a_rev(a, b, k);
+	else
+		a_to_b_rev2(a, b);
 	if (check_sorted(*a))
 		return (0);
 	return (1);

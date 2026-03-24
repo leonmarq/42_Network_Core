@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:31 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 18:06:03 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:48:34 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	sort3_a(x_list **a, x_list **b, int k)
 		if ((*a)->x > (*a)->next->x)
 			sa(*a);
 	}
-	p_to_null(*a);
 	return (0);
 }
 

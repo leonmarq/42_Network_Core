@@ -43,7 +43,24 @@ set them directly after the executable, before the integers
 - ChatGPT and copilot for thinking support
 
 # Algorithms used
-1. adapted quicksort
+- we work with a linked list to sort, find it in the header file.
+
+## Medium
+Chunk based
+1. presorts the list
+
+## Complex
+Quicksort variation
+- we have the following loop, roughly it finds pivots/medians, and creates partitions with help of splitting between lower and heigher halfes. Placing the pivot smartly spares steps. Then a *sort3* hardcoded algorithm if a partition is smaller or equal to 3 elements.
+- the following desciption is more detailed, but hard to read:
+1. find pivot/median in A, push lower value to b, assign Partition 1 and place the pivot on top of B
+2. 1. repeat and name partitions in increasing value until we are left with 1-2 values in A.
+3. 1. take the top(smallest partition in B), push top value to A, remove partitioning
+4. 2. find pivot in B and move bigger values to A, value partition to (biggest partition in A) + 1, place pivot on top of A
+5. again in A, if sorted, partitions to 0.
+6. 1. Else, start at heighest partition(bottom or top), find pivot and move lower to b.
+7. 2. New B partition: heighest in B + 1.
+8. in B, start at heighest partition(bottom or top), find pivot and move lower to b
 
 
 these numbers alll have to be unique and are handed in as the ./push_swap programs arguments.

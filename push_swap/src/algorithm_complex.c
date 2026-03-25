@@ -6,12 +6,13 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:10 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 15:42:31 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:52:52 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static
 int	loop_a_to_b(x_list **a, x_list **b)
 {
 	while (!check_sorted(*a))
@@ -30,6 +31,26 @@ int	loop_a_to_b(x_list **a, x_list **b)
 	return (0);
 }
 
+static
+int	b_to_a_manager(x_list **a, x_list **b)
+{
+	int	did_something;
+
+	did_something = 0;
+	if ((*b)->p >= get_last_p(*b))
+	{
+		b_to_a(a, b);
+		did_something = 1;
+	}
+	else if ((*b)->p < get_last_p(*b))
+	{
+		b_to_a_rev(a, b);
+		did_something = 1;
+	}
+	return (did_something);
+}
+
+static
 int	loop(x_list **a, x_list **b)
 {
 	int	progressed;
@@ -50,16 +71,8 @@ int	loop(x_list **a, x_list **b)
 			continue ;
 		if ((*a)->opts->debug)
 			printlists(*a, *b);
-		if ((*b)->p >= get_last_p(*b))
-		{
-			b_to_a(a, b);
+		if (b_to_a_manager(a, b))
 			progressed = 1;
-		}
-		else if ((*b)->p < get_last_p(*b))
-		{
-			b_to_a_rev(a, b);
-			progressed = 1;
-		}
 	}
 	return (0);
 }

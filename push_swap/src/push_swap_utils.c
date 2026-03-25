@@ -6,72 +6,11 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:21 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 20:14:20 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:39:03 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-x_list	*get_index(x_list *x, int p)
-{
-	int i;
-
-	i = 0;
-	while (x && i++ < p)
-		x = x->next;
-	return x;
-}
-
-int	get_size_end_p(x_list *x)
-{
-	x_list	*tmp;
-	int		p;
-	int		res;
-
-	if (!x)
-		return (0);
-	tmp = x;
-	while (tmp->next)
-		tmp = tmp->next;
-	p = tmp->p;
-	while (x && x->p != p)
-		x = x->next;
-	res = 0;
-	while (x)
-	{
-		x = x->next;
-		res++;
-	}
-	return (res);
-}
-
-int get_size(x_list *x)
-{
-	int res;
-
-	res = 0;
-	while (x)
-	{
-		x = x->next;
-		res++;
-	}
-	return (res);
-}
-
-int	get_size_p(x_list *x)
-{
-	int	res;
-	int	p;
-
-	res = 0;
-	p = x->p;
-	while (x && x->p == p)
-	{
-		x = x->next;
-		res++;
-	}
-	return (res);
-}
 
 int	ps_free_list(x_list *a)
 {
@@ -142,18 +81,3 @@ int	err(void)
 	}
 	return (-1);
 }
-
-int	get_biggest_p(x_list *x)
-{
-	int biggest;
-
-	biggest = x->p;
-	while (x)
-	{
-		if (x->p > biggest)
-			biggest = x->p;
-		x = x->next;
-	}
-	return (biggest);
-}
-

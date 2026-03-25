@@ -10,6 +10,7 @@ SRC_DIR	:= src
 SRCS	:= main.c \
 		$(SRC_DIR)/push_swap.c \
 		$(SRC_DIR)/push_swap_utils.c \
+		$(SRC_DIR)/push_swap_getters.c \
 		$(SRC_DIR)/push_swap_commands.c \
 		$(SRC_DIR)/push_swap_commands2.c \
 		$(SRC_DIR)/push_swap_commands3.c \

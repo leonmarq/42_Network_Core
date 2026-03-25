@@ -6,17 +6,17 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:17 by leon              #+#    #+#             */
-/*   Updated: 2026/03/19 13:22:19 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_median_end2(x_list *a, int size, int med, int k)
+int	find_median_end2(t_slist *a, int size, int med, int k)
 {
 	int		i;
 	int		t;
-	x_list	*temp;
+	t_slist	*temp;
 
 	temp = a;
 	while (temp && temp->p == k)
@@ -41,12 +41,12 @@ int	find_median_end2(x_list *a, int size, int med, int k)
 	return (med);
 }
 
-int	find_median_end(x_list *a)
+int	find_median_end(t_slist *a)
 {
 	int		med;
 	int		size;
 	int		k;
-	x_list	*temp;
+	t_slist	*temp;
 
 	temp = a;
 	while (temp->next)
@@ -68,11 +68,11 @@ int	find_median_end(x_list *a)
 	return (med);
 }
 
-int	find_median2(x_list *a, int size, int med, int k)
+int	find_median2(t_slist *a, int size, int med, int k)
 {
 	int		i;
 	int		t;
-	x_list	*temp;
+	t_slist	*temp;
 
 	temp = a;
 	while (temp && temp->p == k)
@@ -97,12 +97,12 @@ int	find_median2(x_list *a, int size, int med, int k)
 	return (med);
 }
 
-int	find_median(x_list *a)
+int	find_median(t_slist *a)
 {
 	int		med;
 	int		size;
 	int		k;
-	x_list	*temp;
+	t_slist	*temp;
 
 	temp = a;
 	k = a->p;

@@ -6,15 +6,15 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:21 by leon              #+#    #+#             */
-/*   Updated: 2026/03/25 12:39:03 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_free_list(x_list *a)
+int	ps_free_list(t_slist *a)
 {
-	x_list	*temp;
+	t_slist	*temp;
 
 	if (!a)
 		return (0);

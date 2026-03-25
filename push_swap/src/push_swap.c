@@ -6,18 +6,18 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:20 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 19:56:16 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static
-int	sort5_2smaltob(x_list **a, x_list **b, int count)
+int	sort5_2smaltob(t_slist **a, t_slist **b, int count)
 {
 	int		i2;
 	int		x;
-	x_list	*tmp;
+	t_slist	*tmp;
 
 	while (--count > -1)
 	{
@@ -41,10 +41,10 @@ int	sort5_2smaltob(x_list **a, x_list **b, int count)
 }
 
 static
-int	sort5(x_list **a, x_list **b)
+int	sort5(t_slist **a, t_slist **b)
 {
 	int		size;
-	x_list	*tmp;
+	t_slist	*tmp;
 
 	size = 0;
 	tmp = *a;
@@ -66,7 +66,7 @@ int	sort5(x_list **a, x_list **b)
 	return (0);
 }
 
-int	pnx_algorithm(x_list **a, x_list **b, int strat)
+int	pnx_algorithm(t_slist **a, t_slist **b, int strat)
 {
 	if (strat == SIMPLE)
 		return (algorithm_simple(a, b));
@@ -77,9 +77,9 @@ int	pnx_algorithm(x_list **a, x_list **b, int strat)
 	return (0);
 }
 
-int	push_swap(x_list **a, x_list **b)
+int	push_swap(t_slist **a, t_slist **b)
 {
-	x_list	*temp;
+	t_slist	*temp;
 	int		i;
 
 	temp = *a;

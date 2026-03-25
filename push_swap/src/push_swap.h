@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 20:14:39 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:26:28 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef enum e_op_type
 	OP_COUNT
 }	t_op_type;
 
-
 typedef struct s_bench
 {
 	unsigned long	total;
@@ -63,54 +62,50 @@ typedef struct p_list
 	int				p;
 	struct s_opts	*opts;
 	struct p_list	*next;
-}	x_list;
+}	t_slist;
 
-double	compute_disorder(x_list *a);
+double	compute_disorder(t_slist *a);
 int		bench_conditional_increment(t_bench *x, int op);
-void 	bench_print_report(t_bench *b, int strat, double disorder_percent);
-
-int		printlists(x_list *a, x_list *b);
-
-int		push_swap(x_list **a, x_list **b);
+void	bench_print_report(t_bench *b, int strat, double disorder_percent);
+int		printlists(t_slist *a, t_slist *b);
+int		push_swap(t_slist **a, t_slist **b);
 long	ft_atoicheck(char *nptr);
 int		err(void);
-int		ps_free_list(x_list *a);
-
-int		sa(x_list *a);
-int		sb(x_list *b);
-int		ss(x_list *a, x_list *b);
-int		pa(x_list **a, x_list **b);
-int		pb(x_list **a, x_list **b);
-int		ra(x_list **a);
-int		rb(x_list **b);
-int		rr(x_list **a, x_list **b);
-int		rra(x_list **a);
-int		rrb(x_list **b);
-int		rrr(x_list **a, x_list **b);
-int		algorithm_complex(x_list **a, x_list **b);
-int		algorithm_medium(x_list **a, x_list **b);
-int		algorithm_simple(x_list **a, x_list **b);
-
-int		b_to_a(x_list **a, x_list **b);
-int		b_to_a_rev(x_list **a, x_list **b);
-int		a_to_b(x_list **a, x_list **b);
-int		a_to_b_rev(x_list **a, x_list **b);
-int 	sort3_a(x_list **a, x_list **b, int k);
-int		sort3_b_pa(x_list **a, x_list **b, int k);
-int		find_median(x_list *a);
-int		find_median_end(x_list *a);
-int		get_size_p(x_list *x);
-int 	get_size(x_list *x);
-int		get_size_end_p(x_list *x);
-int		p_to_null(x_list *a);
-int		check_sorted(x_list *a);
-int		get_last(x_list *x);
-int		get_last_p(x_list *x);
-int		get_biggest(x_list *x);
-int		get_biggest_p(x_list *x);
-void	free_pslist(x_list *x);
-
-int 	min(int a, int b);
-x_list	*get_index(x_list *x, int p);
+int		ps_free_list(t_slist *a);
+int		sa(t_slist *a);
+int		sb(t_slist *b);
+int		ss(t_slist *a, t_slist *b);
+int		pa(t_slist **a, t_slist **b);
+int		pb(t_slist **a, t_slist **b);
+int		ra(t_slist **a);
+int		rb(t_slist **b);
+int		rr(t_slist **a, t_slist **b);
+int		rra(t_slist **a);
+int		rrb(t_slist **b);
+int		rrr(t_slist **a, t_slist **b);
+int		algorithm_complex(t_slist **a, t_slist **b);
+int		algorithm_medium(t_slist **a, t_slist **b);
+int		algorithm_simple(t_slist **a, t_slist **b);
+int		b_to_a(t_slist **a, t_slist **b);
+int		b_to_a_rev(t_slist **a, t_slist **b);
+int		a_to_b(t_slist **a, t_slist **b);
+int		a_to_b_rev(t_slist **a, t_slist **b);
+int		sort3_a(t_slist **a, t_slist **b, int k);
+int		sort3_b_pa(t_slist **a, t_slist **b, int k);
+int		sort3_b_pa_rev(t_slist **a, t_slist **b);
+int		find_median(t_slist *a);
+int		find_median_end(t_slist *a);
+int		get_size_p(t_slist *x);
+int		get_size(t_slist *x);
+int		get_size_end_p(t_slist *x);
+int		p_to_null(t_slist *a);
+int		check_sorted(t_slist *a);
+int		get_last(t_slist *x);
+int		get_last_p(t_slist *x);
+int		get_biggest(t_slist *x);
+int		get_biggest_p(t_slist *x);
+void	free_pslist(t_slist *x);
+int		min(int a, int b);
+t_slist	*get_index(t_slist *x, int p);
 
 #endif

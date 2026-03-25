@@ -6,13 +6,13 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:56 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 14:36:04 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sa(x_list *a)
+int	sa(t_slist *a)
 {
 	int	temp;
 
@@ -28,7 +28,7 @@ int	sa(x_list *a)
 	return (1);
 }
 
-int	sb(x_list *b)
+int	sb(t_slist *b)
 {
 	int	temp;
 
@@ -44,7 +44,7 @@ int	sb(x_list *b)
 	return (1);
 }
 
-int	ss(x_list *a, x_list *b)
+int	ss(t_slist *a, t_slist *b)
 {
 	int	temp;
 
@@ -63,9 +63,9 @@ int	ss(x_list *a, x_list *b)
 	return (1);
 }
 
-int	pa(x_list **a, x_list **b)
+int	pa(t_slist **a, t_slist **b)
 {
-	x_list	*newb;
+	t_slist	*newb;
 
 	if (!(*b))
 		return (0);
@@ -78,9 +78,9 @@ int	pa(x_list **a, x_list **b)
 	return (1);
 }
 
-int	pb(x_list **a, x_list **b)
+int	pb(t_slist **a, t_slist **b)
 {
-	x_list	*newa;
+	t_slist	*newa;
 
 	if (!(*a))
 		return (0);

@@ -6,13 +6,13 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 20:17:10 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/24 20:17:11 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	printlists(x_list *a, x_list *b)
+int	printlists(t_slist *a, t_slist *b)
 {
 	write(1, "a:\n", 3);
 	while (a)

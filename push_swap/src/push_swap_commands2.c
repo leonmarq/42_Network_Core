@@ -6,16 +6,16 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:23 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 14:36:55 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ra(x_list **a)
+int	ra(t_slist **a)
 {
-	x_list	*temp;
-	x_list	*news;
+	t_slist	*temp;
+	t_slist	*news;
 
 	if (!(*a) || !(*a)->next)
 		return (0);
@@ -31,10 +31,10 @@ int	ra(x_list **a)
 	return (1);
 }
 
-int	rb(x_list **b)
+int	rb(t_slist **b)
 {
-	x_list	*temp;
-	x_list	*news;
+	t_slist	*temp;
+	t_slist	*news;
 
 	if (!(*b) || !(*b)->next)
 		return (0);
@@ -50,10 +50,10 @@ int	rb(x_list **b)
 	return (1);
 }
 
-int	rr(x_list **a, x_list **b)
+int	rr(t_slist **a, t_slist **b)
 {
-	x_list	*temp;
-	x_list	*news;
+	t_slist	*temp;
+	t_slist	*news;
 
 	if (!(*a) || !(*a)->next)
 		return (0);

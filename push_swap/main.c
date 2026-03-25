@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:33:41 by leon              #+#    #+#             */
-/*   Updated: 2026/03/24 20:15:53 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:51 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 	return (0);
 }
 
-int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
+int	fill_list(t_slist *a, int argc, char **argv, t_opts *opts)
 {
 	int		i;
 
@@ -75,7 +75,7 @@ int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 		i++;
 		if (i >= argc)
 			break ;
-		a->next = ft_calloc(1, sizeof(x_list));
+		a->next = ft_calloc(1, sizeof(t_slist));
 		if (!a->next)
 			return (1);
 		a = a->next;
@@ -84,10 +84,10 @@ int	fill_list(x_list *a, int argc, char **argv, t_opts *opts)
 	return (0);
 }
 
-int	check_list(x_list *a)
+int	check_list(t_slist *a)
 {
-	x_list	*t1;
-	x_list	*t2;
+	t_slist	*t1;
+	t_slist	*t2;
 	int		i1;
 	int		i2;
 
@@ -114,13 +114,13 @@ int	check_list(x_list *a)
 
 int	main(int argc, char **argv)
 {
-	x_list	*a;
-	x_list	*b;
+	t_slist	*a;
+	t_slist	*b;
 	t_opts	o;
 
 	if (argc < 2)
 		return (0);
-	a = malloc(sizeof(x_list));
+	a = malloc(sizeof(t_slist));
 	b = NULL;
 	if (fill_list(a, argc, argv, &o) != 0 || check_list(a) != 0)
 	{

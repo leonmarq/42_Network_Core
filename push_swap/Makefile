@@ -10,7 +10,8 @@ SRC_DIR	:= src
 SRCS	:= main.c \
 		$(SRC_DIR)/push_swap.c \
 		$(SRC_DIR)/push_swap_utils.c \
-		$(SRC_DIR)/push_swap_getters.c \
+		$(SRC_DIR)/getters.c \
+		$(SRC_DIR)/getters_p.c \
 		$(SRC_DIR)/push_swap_commands.c \
 		$(SRC_DIR)/push_swap_commands2.c \
 		$(SRC_DIR)/push_swap_commands3.c \
@@ -20,8 +21,11 @@ SRCS	:= main.c \
 		$(SRC_DIR)/find_median.c \
 		$(SRC_DIR)/small_funcs.c \
 		$(SRC_DIR)/sort3.c \
+		$(SRC_DIR)/sort3_b_pa.c \
+		$(SRC_DIR)/sort3_b_pa_rev.c \
 		$(SRC_DIR)/a_to_b.c \
 		$(SRC_DIR)/b_to_a.c \
+		$(SRC_DIR)/b_to_a_rev.c \
 		$(SRC_DIR)/debug_utils.c \
 		$(SRC_DIR)/benchmark.c
 OBJS	:= $(SRCS:.c=.o)

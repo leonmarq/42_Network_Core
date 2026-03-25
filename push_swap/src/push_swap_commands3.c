@@ -6,15 +6,15 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:36:26 by leon              #+#    #+#             */
-/*   Updated: 2026/03/23 14:37:21 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rra(x_list **a)
+int	rra(t_slist **a)
 {
-	x_list	*temp;
+	t_slist	*temp;
 
 	if (!(*a) || !(*a)->next)
 		return (0);
@@ -29,9 +29,9 @@ int	rra(x_list **a)
 	return (1);
 }
 
-int	rrb(x_list **b)
+int	rrb(t_slist **b)
 {
-	x_list	*temp;
+	t_slist	*temp;
 
 	if (!(*b) || !(*b)->next)
 		return (0);
@@ -46,9 +46,9 @@ int	rrb(x_list **b)
 	return (1);
 }
 
-int	rrr(x_list **a, x_list **b)
+int	rrr(t_slist **a, t_slist **b)
 {
-	x_list	*temp;
+	t_slist	*temp;
 
 	if (!(*a) || !(*a)->next)
 		return (0);

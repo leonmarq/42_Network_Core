@@ -12,12 +12,22 @@
 
 #include "libft.h"
 
+int	put_digit_fd(int n, int fd)
+{
+	char	c;
+
+	c = n + '0';
+	return (write(fd, &c, 1));
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
 	long	nl;
+	char	minus;
 
 	nl = n;
+	minus = '-';
 	if (nl < -9 || nl > 9)
 	{
 		if (nl < -9)
@@ -31,12 +41,9 @@ void	ft_putnbr_fd(int n, int fd)
 	else if (nl < 0)
 	{
 		c = (nl * -1) + '0';
-		write(fd, "-", 1);
+		write(fd, &minus, 1);
 		write(fd, &c, 1);
 	}
 	else
-	{
-		c = nl + '0';
-		write(fd, &c, 1);
-	}
+		put_digit_fd(nl, fd);
 }

@@ -25,15 +25,15 @@ SRC	:= ft_memset.c ft_memcpy.c ft_bzero.c ft_atoi.c ft_memmove.c \
     		ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 OBJ	:= $(SRC:.c=.o)
 
-all: $(NAME) clean
+all: $(NAME)
 
 re: fclean all
 
 $(NAME): $(OBJ)
 	ar $(LFLAGS) $@ $(OBJ)
 
-$(OBJ):
-	$(CC) $(CFLAGS) -c $(SRC)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f *.o

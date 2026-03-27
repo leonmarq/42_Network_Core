@@ -6,26 +6,11 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 13:12:19 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/25 13:25:40 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/27 15:13:01 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static
-char	*strat_to_string(int strat)
-{
-	if (strat == SIMPLE)
-		return ("Simple / O(n²)");
-	else if (strat == MEDIUM)
-		return ("Medium / O(n√n)");
-	else if (strat == COMPLEX)
-		return ("Complex / O(n log n)");
-	else if (strat == ADAPTIVE)
-		return ("Adaptive / O(n log n)");
-	else
-		return ("Adaptive / O(n log n)");
-}
 
 int	bench_conditional_increment(t_bench *x, int op)
 {
@@ -65,26 +50,26 @@ double	compute_disorder(t_slist *a)
 	return ((mistakes * 100.0) / total_pairs);
 }
 
-void	bench_print_report(t_bench *b, int strat, double dis_percent)
+void	bench_print_report(t_opts o)
 {
 	char	*pref;
-	char	*strategy;
 	int		dis_frac;
 	int		dis_whole;
+	t_bench	*b;
 
+	b = o.bench;
 	pref = "[bench]";
-	dis_whole = (int)dis_percent;
-	dis_frac = (int)((dis_percent - (double)dis_whole) * 100.0 + 0.5);
-	ft_dprintf("%s disorder: %20d.%-02d%%\n",
+	dis_whole = (int)o.disorder;
+	dis_frac = (int)((o.disorder - (double)dis_whole) * 100.0 + 0.5);
+	ft_dprintf(2, "%s disorder: %20d.%-02d%%\n",
 		pref, dis_whole, dis_frac);
-	strategy = strat_to_string(strat);
-	ft_dprintf("%s strategy: %24s\n", pref, strategy);
-	ft_dprintf("%s total ops: %23u\n", pref, b->total);
-	ft_dprintf("%s sa: %5u ", pref, b->op[OP_SA]);
-	ft_dprintf("sb: %5u ss: %5u ", b->op[OP_SB], b->op[OP_SS]);
-	ft_dprintf("pa: %5u pb: %5u\n", b->op[OP_PA], b->op[OP_PB]);
-	ft_dprintf("%s ra: %5u rb: ", pref, b->op[OP_RA]);
-	ft_dprintf("%5u rr: %5u ", b->op[OP_RB], b->op[OP_RR]);
-	ft_dprintf("rra: %4u rrb: %4u ", b->op[OP_RRA], b->op[OP_RRB]);
-	ft_dprintf("rrr: %4u\n", b->op[OP_RRR]);
+	ft_dprintf(2, "%s strategy: %24s\n", pref, o.strat_name);
+	ft_dprintf(2, "%s total ops: %23u\n", pref, b->total);
+	ft_dprintf(2, "%s sa: %5u ", pref, b->op[OP_SA]);
+	ft_dprintf(2, "sb: %5u ss: %5u ", b->op[OP_SB], b->op[OP_SS]);
+	ft_dprintf(2, "pa: %5u pb: %5u\n", b->op[OP_PA], b->op[OP_PB]);
+	ft_dprintf(2, "%s ra: %5u rb: ", pref, b->op[OP_RA]);
+	ft_dprintf(2, "%5u rr: %5u ", b->op[OP_RB], b->op[OP_RR]);
+	ft_dprintf(2, "rra: %4u rrb: %4u ", b->op[OP_RRA], b->op[OP_RRB]);
+	ft_dprintf(2, "rrr: %4u\n", b->op[OP_RRR]);
 }

@@ -1,4 +1,4 @@
-CC			:= gcc
+CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 LDFLAGS		:= -no-pie -Lft_dprintf
 LDLIBS		:= -lftprintfd

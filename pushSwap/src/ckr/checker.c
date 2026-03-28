@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 15:16:57 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/27 15:42:11 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 11:49:09 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 int	execute_command(char *command, t_slist **a, t_slist **b)
 {
-	if (ft_strncmp(command, "sa\n", 3) == 0)
-		sa_ckr(*a);
-	else if (ft_strncmp(command, "sb\n", 3) == 0)
-		sb_ckr(*b);
-	else if (ft_strncmp(command, "ss\n", 3) == 0)
-		ss_ckr(*a, *b);
-	else if (ft_strncmp(command, "pa\n", 3) == 0)
-		pa_ckr(a, b);
-	else if (ft_strncmp(command, "pb\n", 3) == 0)
-		pb_ckr(a, b);
-	else if (ft_strncmp(command, "ra\n", 3) == 0)
-		ra_ckr(a);
-	else if (ft_strncmp(command, "rb\n", 3) == 0)
-		rb_ckr(b);
-	else if (ft_strncmp(command, "rr\n", 3) == 0)
-		rr_ckr(a, b);
-	else if (ft_strncmp(command, "rra\n", 4) == 0)
+	if (ft_strncmp(command, "rra", 3) == 0)
 		rra_ckr(a);
-	else if (ft_strncmp(command, "rrb\n", 4) == 0)
+	else if (ft_strncmp(command, "rrb", 3) == 0)
 		rrb_ckr(b);
-	else if (ft_strncmp(command, "rrr\n", 4) == 0)
+	else if (ft_strncmp(command, "rrr", 3) == 0)
 		rrr_ckr(a, b);
+	else if (ft_strncmp(command, "sa", 2) == 0)
+		sa_ckr(*a);
+	else if (ft_strncmp(command, "sb", 2) == 0)
+		sb_ckr(*b);
+	else if (ft_strncmp(command, "ss", 2) == 0)
+		ss_ckr(*a, *b);
+	else if (ft_strncmp(command, "pa", 2) == 0)
+		pa_ckr(a, b);
+	else if (ft_strncmp(command, "pb", 2) == 0)
+		pb_ckr(a, b);
+	else if (ft_strncmp(command, "ra", 2) == 0)
+		ra_ckr(a);
+	else if (ft_strncmp(command, "rb", 2) == 0)
+		rb_ckr(b);
+	else if (ft_strncmp(command, "rr", 2) == 0)
+		rr_ckr(a, b);
+
 	else
 		return (1);
 	return (0);

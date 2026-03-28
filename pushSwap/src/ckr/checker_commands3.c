@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 15:17:51 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/27 15:17:52 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 11:53:24 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,29 @@ int	rrb_ckr(t_slist **b)
 
 	if (!(*b) || !(*b)->next)
 		return (0);
+	temp = (*b);
+	while (temp->next->next)
+		temp = temp->next;
+	temp->next->next = (*b);
+	(*b) = temp->next;
+	temp->next = NULL;
+	return (1);
+}
+
+int	rrr_ckr(t_slist **a, t_slist **b)
+{
+	t_slist	*temp;
+
+	if (!(*a) || !(*a)->next)
+		return (0);
+	if (!(*b) || !(*b)->next)
+		return (0);
+	temp = (*a);
+	while (temp->next->next)
+		temp = temp->next;
+	temp->next->next = (*a);
+	(*a) = temp->next;
+	temp->next = NULL;
 	temp = (*b);
 	while (temp->next->next)
 		temp = temp->next;

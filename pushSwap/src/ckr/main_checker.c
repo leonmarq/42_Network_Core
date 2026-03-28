@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 09:26:59 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/28 11:30:29 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 11:44:56 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,21 @@ int	valid_command(char *command)
 		|| ft_strncmp(command, "ra\n", 4) == 0
 		|| ft_strncmp(command, "rb\n", 4) == 0
 		|| ft_strncmp(command, "rr\n", 4) == 0
-		|| ft_strncmp(command, "rra\n", 4) == 0
-		|| ft_strncmp(command, "rrb\n", 4) == 0
-		|| ft_strncmp(command, "rrr\n", 4) == 0)
+		|| ft_strncmp(command, "rra\n", 5) == 0
+		|| ft_strncmp(command, "rrb\n", 5) == 0
+		|| ft_strncmp(command, "rrr\n", 5) == 0)
+		return (1);
+	else if (ft_strncmp(command, "sa", 3) == 0
+		|| ft_strncmp(command, "sb", 3) == 0
+		|| ft_strncmp(command, "ss", 3) == 0
+		|| ft_strncmp(command, "pa", 3) == 0
+		|| ft_strncmp(command, "pb", 3) == 0
+		|| ft_strncmp(command, "ra", 3) == 0
+		|| ft_strncmp(command, "rb", 3) == 0
+		|| ft_strncmp(command, "rr", 3) == 0
+		|| ft_strncmp(command, "rra", 4) == 0
+		|| ft_strncmp(command, "rrb", 4) == 0
+		|| ft_strncmp(command, "rrr", 4) == 0)
 		return (1);
 	else
 		return (0);
@@ -48,8 +60,6 @@ int	loop_command_execution(t_slist **a, t_slist **b)
 			return (1);
 		}
 		free(command);
-		if (check_sorted(*a) && !*b)
-			break ;
 	}
 	return (0);
 }

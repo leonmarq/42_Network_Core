@@ -22,7 +22,6 @@
 # =========================
 push_swap
 checker
-checker_*
 a.out
 
 # Generated archives from local libs

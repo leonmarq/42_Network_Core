@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:21 by leon              #+#    #+#             */
-/*   Updated: 2026/03/27 18:12:41 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 10:49:15 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,31 @@ int	ft_atoicheck_init(long long *x10, long long *res, char *nptr)
 		*x10 = -1;
 	if (nptr[i] == '+' || nptr[i] == '-')
 		i++;
+	while (nptr[i] == '0')
+		i++;
 	return (i);
 }
 
 long	ft_atoicheck(char *nptr)
 {
 	int			i;
+	int			start;
 	long long	res;
 	long long	x10;
 
-	if (!nptr || !*nptr)
+	if (!nptr || !(*nptr))
 		return ((long)2147483648);
 	i = ft_atoicheck_init(&x10, &res, nptr);
-	if (nptr[i] == '0' && nptr[i + 1] == '\0')
+	start = i;
+	if (i > 0 && nptr[i - 1] == '0' && nptr[i] == '\0')
 		return (0);
 	if (!(nptr[i] > '0' && nptr[i] <= '9'))
 		return ((long)2147483648);
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[i + 1] >= '0' && nptr[i + 1] <= '9')
 		i++;
-	if (nptr[i] || i-- > 11)
+	if (nptr[i + 1] || ((i + 1) - start) > 10)
 		return ((long)2147483648);
-	while (i >= 0 && nptr[i] >= '0' && nptr[i] <= '9')
+	while (i >= start && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		res = ((nptr[i--] - '0') * x10) + res;
 		x10 = x10 * 10;

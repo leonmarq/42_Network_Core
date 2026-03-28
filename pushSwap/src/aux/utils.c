@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 18:45:32 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/27 18:01:31 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 10:44:07 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	*free_arr(char **arr)
 	int	i;
 
 	i = 0;
+	if (!arr)
+		return (NULL);
 	while (arr[i])
 	{
 		free(arr[i]);

@@ -63,6 +63,8 @@ OBJ_CM := $(CKR_MAIN:.c=.o)
 
 all: $(NAME)
 
+bonus: $(NAME_C)
+
 $(NAME_C): $(LIBFTPRINTFD) $(OBJ_CM) $(OBJS_C) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJ_CM) $(OBJS_C) $(OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME_C)
 
@@ -87,4 +89,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re visualizer revisualizer
+.PHONY: all clean fclean re visualizer revisualizer bonus

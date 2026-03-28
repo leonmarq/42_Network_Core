@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 15:45:16 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/27 15:45:16 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 13:49:16 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int		rrr_ckr(t_slist **a, t_slist **b);
 t_slist	*start_new_slist(void);
 int		ckr_free_list(t_slist *a);
 int		free_opts(t_opts *opts);
+int		is_commandnonl(char *command);
+int		is_commandwnl(char *command);
 
 #endif

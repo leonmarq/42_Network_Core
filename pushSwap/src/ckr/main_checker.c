@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 09:26:59 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/28 11:44:56 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 13:49:27 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,7 @@
 
 int	valid_command(char *command)
 {
-	if (ft_strncmp(command, "sa\n", 4) == 0
-		|| ft_strncmp(command, "sb\n", 4) == 0
-		|| ft_strncmp(command, "ss\n", 4) == 0
-		|| ft_strncmp(command, "pa\n", 4) == 0
-		|| ft_strncmp(command, "pb\n", 4) == 0
-		|| ft_strncmp(command, "ra\n", 4) == 0
-		|| ft_strncmp(command, "rb\n", 4) == 0
-		|| ft_strncmp(command, "rr\n", 4) == 0
-		|| ft_strncmp(command, "rra\n", 5) == 0
-		|| ft_strncmp(command, "rrb\n", 5) == 0
-		|| ft_strncmp(command, "rrr\n", 5) == 0)
-		return (1);
-	else if (ft_strncmp(command, "sa", 3) == 0
-		|| ft_strncmp(command, "sb", 3) == 0
-		|| ft_strncmp(command, "ss", 3) == 0
-		|| ft_strncmp(command, "pa", 3) == 0
-		|| ft_strncmp(command, "pb", 3) == 0
-		|| ft_strncmp(command, "ra", 3) == 0
-		|| ft_strncmp(command, "rb", 3) == 0
-		|| ft_strncmp(command, "rr", 3) == 0
-		|| ft_strncmp(command, "rra", 4) == 0
-		|| ft_strncmp(command, "rrb", 4) == 0
-		|| ft_strncmp(command, "rrr", 4) == 0)
+	if (is_commandwnl(command) || is_commandnonl(command))
 		return (1);
 	else
 		return (0);
@@ -90,7 +68,7 @@ int	create_list(int argc, char **argv, t_slist **a)
 	return (0);
 }
 
-int free_lists(t_slist *a, t_slist *b)
+int	free_lists(t_slist *a, t_slist *b)
 {
 	if (a)
 		free_opts(a->opts);

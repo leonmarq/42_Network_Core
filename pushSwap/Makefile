@@ -54,7 +54,8 @@ SRCS_C	:= $(CHECKER_DIR)/checker.c \
 			$(GNL_DIR)/get_next_line_utils.c \
 			$(CHECKER_DIR)/checker_commands.c \
 			$(CHECKER_DIR)/checker_commands2.c \
-			$(CHECKER_DIR)/checker_commands3.c
+			$(CHECKER_DIR)/checker_commands3.c \
+			$(CHECKER_DIR)/find_command.c
 
 OBJS	:= $(SRCS:.c=.o)
 OBJS_C	:= $(SRCS_C:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 15:16:57 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/28 11:49:09 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 13:42:40 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	execute_command(char *command, t_slist **a, t_slist **b)
 		rb_ckr(b);
 	else if (ft_strncmp(command, "rr", 2) == 0)
 		rr_ckr(a, b);
-
 	else
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 18:45:32 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/28 10:44:07 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 12:27:17 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	parse_opts(int argc, char **argv, t_opts *o)
 {
 	int	i;
 
-	o->strat = DEFAULT;
+	o->strat = ADAPTIVE;
 	o->debug = 0;
 	o->bench = NULL;
 	o->disorder = 0.0;

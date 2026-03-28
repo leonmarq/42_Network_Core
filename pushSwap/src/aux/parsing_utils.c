@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 18:26:12 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/27 19:07:47 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 10:44:44 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ char	**parse_string(char *str, char **input, int *dst_i)
 	if (!split[0])
 	{
 		free_arr(split);
-		err();
 		return (free_arr(input));
 	}
 	input = arr_cat(input, split, dst_i);

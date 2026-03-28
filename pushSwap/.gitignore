@@ -1,0 +1,7 @@
+push_swap_visualizer
+push_swap
+checker
+*.o
+*.a
+*.txt
+*.log

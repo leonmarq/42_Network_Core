@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:37:07 by leon              #+#    #+#             */
-/*   Updated: 2026/03/27 18:48:19 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 11:20:20 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ void	free_pslist(t_slist *x);
 int		min(int a, int b);
 float	fsqurt(float num);
 t_slist	*get_index(t_slist *x, int p);
-int		fill_list(t_slist *a, int argc, char **argv, t_opts *opts);
-t_slist	*arr_to_list(char **arr, t_slist *a);
+int		fill_list(t_slist **a, int argc, char **argv, t_opts *opts);
+int		arr_to_list(char **arr, t_slist **a);
 char	**allocate_input(char **argv, int argc, int k);
 int		parse_opts(int argc, char **argv, t_opts *o);
 int		set_strat(char *s, int *strat);

@@ -6,25 +6,25 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 18:49:31 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/27 17:45:37 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 11:22:26 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_slist	*arr_to_list(char **arr, t_slist *a)
+int	arr_to_list(char **arr, t_slist **a)
 {
 	int		i;
 	t_opts	*opts;
 	t_slist	*a_t;
 
 	i = 0;
-	opts = a->opts;
-	a_t = a;
+	opts = (*a)->opts;
+	a_t = *a;
 	while (arr[i])
 	{
 		if (ft_atoicheck(arr[i]) == (long)2147483648)
-			return (NULL);
+			return (1);
 		a_t->x = (int)ft_atoicheck(arr[i]);
 		a_t->p = 0;
 		a_t->next = NULL;
@@ -34,18 +34,17 @@ t_slist	*arr_to_list(char **arr, t_slist *a)
 			break ;
 		a_t->next = ft_calloc(1, sizeof(t_slist));
 		if (!a_t->next)
-			return (NULL);
+			return (1);
 		a_t = a_t->next;
 	}
 	a_t->next = NULL;
-	return (a);
+	return (0);
 }
 
-int	fill_list(t_slist *a, int argc, char **argv, t_opts *opts)
+int	fill_list(t_slist **a, int argc, char **argv, t_opts *opts)
 {
 	int		i;
 	char	**input;
-	t_slist	*a_t;
 
 	if (parse_opts(argc, argv, opts))
 		return (1);
@@ -53,11 +52,11 @@ int	fill_list(t_slist *a, int argc, char **argv, t_opts *opts)
 	input = allocate_input(argv, argc, i);
 	if (!input)
 		return (1);
-	a->opts = opts;
-	a_t = a;
-	a_t = arr_to_list(input, a);
+	(*a)->opts = opts;
+	if (arr_to_list(input, a))
+		i = 1;
+	else
+		i = 0;
 	free_arr(input);
-	if (!a_t)
-		return (1);
-	return (0);
+	return (i);
 }

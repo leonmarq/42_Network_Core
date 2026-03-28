@@ -1,0 +1,5 @@
+Repository-local Codex instructions
+
+- Do not edit files unless the user explicitly asks for edits, patches, or implementation.
+- Default to read-only investigation, explanation, review, and diagnosis.
+- Before making any file change, confirm that the user requested code changes in this turn.

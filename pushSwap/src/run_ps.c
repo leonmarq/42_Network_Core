@@ -6,7 +6,7 @@
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 15:13:24 by leonmarq          #+#    #+#             */
-/*   Updated: 2026/03/27 16:49:50 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/28 11:08:18 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	run_ps(int argc, char **argv)
 		return (0);
 	a = ft_calloc(1, sizeof(t_slist));
 	b = NULL;
-	if (fill_list(a, argc, argv, &o) != 0 || check_list(a) != 0)
+	if (fill_list(&a, argc, argv, &o) != 0 || check_list(a) != 0)
 	{
 		err();
 		ps_free_list(a);

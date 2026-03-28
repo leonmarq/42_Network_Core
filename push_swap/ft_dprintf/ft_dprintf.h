@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dprintf.h                                        :+:      :+:    :+:   */
+/*   ft_dprintf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leonmarq <leonmarq@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:40:14 by lmarquar          #+#    #+#             */
-/*   Updated: 2026/03/22 16:03:45 by leonmarq         ###   ########.fr       */
+/*   Updated: 2026/03/27 09:23:51 by leonmarq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct b_list
 
 char	*tobighex(unsigned long decnum);
 char	*tosmallhex(unsigned long decnum);
-int		ft_dprintf(const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 t_plist	*emptylist(void);
 int		filllist(t_plist *list, const char *format, va_list args);
 char	*ft_strdup(const char *s);

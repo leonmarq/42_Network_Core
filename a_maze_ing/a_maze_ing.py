@@ -35,11 +35,7 @@ def read_config(file, key) -> str:
 
 def write_maze(maze, width, height, exit, output):
     with open(output, "w") as f:
-        f.write(f"WIDTH={width}\n")
-        f.write(f"HEIGHT={height}\n")
-        f.write(f"EXIT={exit}\n")
-        for cell in maze:
-            f.write(f"{cell:X}\n")  # write cell as 4-bit binary
+        print(maze, file=f)
 
 
 if __name__ == "__main__":
@@ -49,5 +45,5 @@ if __name__ == "__main__":
     exit = read_config(file, "EXIT")
     output = read_config(file, "OUTPUT_FILE")
     isperfect = read_config(file, "PERFECT")
-    maze = [0b1111 for _ in range(width * height)]  # all walls closed
+    maze = np.chararray(width, height)
     write_maze(maze, width, height, exit, output)

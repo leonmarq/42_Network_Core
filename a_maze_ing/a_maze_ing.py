@@ -2,28 +2,52 @@ from enum import Enum
 import numpy as np
 
 
+def close_wall(cell, direction):
+    return cell | (1 << direction)
+
+
+def open_wall(cell, direction):
+    return cell & ~(1 << direction)
+
+
+def is_wall_closed(cell, direction):
+    return bool(cell & (1 << direction))
+
+
 class Direction(Enum):
-    O = 0
     N = 0
     E = 1
     S = 2
     W = 3
 
 
-def read_config(file, key):
+def read_config(file, key) -> str:
+    value = None
     with open(file, "r") as f:
         for line in f:
             if line.startswith(key):
-                return line.split("=")[1].strip()
-    return None
+                value = line.split("=")[1].strip()
+                break
+    if value is None:
+        raise ValueError(f"Missing required config key: {key}")
+    return value
+
+
+def write_maze(maze, width, height, exit, output):
+    with open(output, "w") as f:
+        f.write(f"WIDTH={width}\n")
+        f.write(f"HEIGHT={height}\n")
+        f.write(f"EXIT={exit}\n")
+        for cell in maze:
+            f.write(f"{cell:X}\n")  # write cell as 4-bit binary
 
 
 if __name__ == "__main__":
     file = "test_config.txt"
-    width = read_config(file, "WIDTH")
-    height = read_config(file, "HEIGHT")
+    width = int(read_config(file, "WIDTH"))
+    height = int(read_config(file, "HEIGHT"))
     exit = read_config(file, "EXIT")
     output = read_config(file, "OUTPUT_FILE")
     isperfect = read_config(file, "PERFECT")
-    data1 = np.random.random((width, height))
-
+    maze = [0b1111 for _ in range(width * height)]  # all walls closed
+    write_maze(maze, width, height, exit, output)
